@@ -1,0 +1,106 @@
+.w3-theme {
+    color:#fff !important; background-color:#0c1b27 !important
+}
+.w3-text-theme {
+    color:#fff !important
+}
+.w3-hover-theme:hover {
+    color:#3bb0d1 !important; background-color:#0c1b27 !important
+}
+.w3-hover-text-theme:hover {
+    color:#5ce1e6 !important
+}
+.w3-hover-border-theme:hover {
+    border-color:#0c1b27 !important
+}
+.w3-border-theme {
+    border-color:#5a5f66 !important
+}
+
+.w3-theme-button {color:#fff !important; background-color:#0097b2 !important}
+.gradient_theme{
+    background: linear-gradient(180deg, #0c1b27, #aaafb8);
+    color: aliceblue;
+}
+
+.size {
+    width: 30%;
+}
+
+/*h1{
+    font-size: 2.782vw;
+}
+h2{
+    font-size: 2.318vw;
+}
+h3{
+    font-size: 1.855vw;
+}
+
+h4{
+    font-size: 1.391 vw;
+}*/
+
+.fa-users, .fa-screwdriver-wrench, .fa-car-on{
+    color: #5ce1e6;
+}
+
+.icon-link {
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+    max-width: 600px;
+}
+
+.indes-section {
+    padding: 80px;
+}
+
+.bltb {
+    border: 0px solid #132839;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.brtb {
+    border: 0px solid #132839;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.icon-container{
+    background: linear-gradient(180deg,#5a5f66,#132839)
+}
+
+
+.unique-body{
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.form {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto  ;
+}
+.form-input{
+    width: 50px;
+}
+
+.svg{
+    width: 200px;
+    height: 150px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
