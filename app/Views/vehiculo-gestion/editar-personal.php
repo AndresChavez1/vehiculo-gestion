@@ -31,7 +31,7 @@
                 <div class="w3-section w3-half">
                     <label><b>Fecha de nacimiento</b></label>
                     <input class="w3-input w3-border w3-margin-bottom" 
-                    name="fecha_nacimiento" type="text" value="<?php echo $personal_obj['fecha_nacimiento']; ?>">
+                    name="fecha_nacimiento" type="date" value="<?php echo $personal_obj['fecha_nacimiento']; ?>">
                 </div>
                 <div class="w3-section w3-half">
                     <label><b>Grupo sanguineo</b></label>
@@ -41,7 +41,7 @@
                 <div class="w3-section w3-half">
                     <label><b>Ciudad de nacimiento</b></label>
                     <input class="w3-input w3-border w3-margin-bottom" 
-                    name="ciudad_nacimiento" type="date" value="<?php echo $personal_obj['ciudad_nacimiento']; ?>">
+                    name="ciudad_nacimiento" type="text" value="<?php echo $personal_obj['ciudad_nacimiento']; ?>">
                 </div>
                 <div class="w3-section w3-half">
                     <label><b>Telefono</b></label>

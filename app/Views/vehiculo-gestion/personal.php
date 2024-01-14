@@ -1,4 +1,4 @@
-<?php echo $this->extend('layouts/plantilla-interna') ?>
+<?php echo $this->extend('layouts/plantilla-interna'); ?>
 
 <?php echo $this->section('content'); ?>
 
@@ -28,8 +28,8 @@
                     <img src="<?php echo base_url('assets/img/add-user.svg') ?>" alt="User Icon" class=" w3-margin-top svg" >
                 </div>
                 
-            <form method="post" class="w3-container w3-row-padding" 
-            action="<?php echo base_url('/enviar-form') ?>">
+            <form method="POST" class="w3-container w3-row-padding" 
+            action="<?php echo base_url('/personal-form') ?>">
                 <div class="w3-section w3-half">
                     <label><b>Nombres</b></label>
                     <input class="w3-input w3-border w3-margin-bottom" 
@@ -43,7 +43,7 @@
                 <div class="w3-section w3-half">
                     <label><b>Cedula</b></label>
                     <input class="w3-input w3-border w3-margin-bottom" 
-                    name="cedula" type="text" placeholder="Ingresar Cedula">
+                    name="cedula" type="number" placeholder="Ingresar Cedula">
                 </div>
                 <div class="w3-section w3-half">
                     <label><b>Fecha de nacimiento</b></label>
@@ -51,9 +51,13 @@
                     name="fecha_nacimiento" type="date" placeholder="Ingresar Fecha de nacimiento">
                 </div>
                 <div class="w3-section w3-half">
-                    <label><b>Grupo sanguineo</b></label>
-                    <input class="w3-input w3-border w3-margin-bottom" 
-                    name="grupo_sanguineo" type="text" placeholder="Ingresar Grupo sanguíneo">
+                    <label><b>Grupo Sanguineo</b></label>
+                    <select name="tipo_sangre" class="w3-select">
+                        <option value=""></option>
+                        <?php foreach ($tipo_sangre as $item): ?>
+                            <option value="<?php echo $item->id_tipo_sangre ?>"><?php echo $item->nombre_tipo_sangre ?></option>
+                        <?php endforeach; ?>
+                        </select>
                 </div>
                 <div class="w3-section w3-half">
                     <label><b>Ciudad de nacimiento</b></label>
@@ -67,13 +71,39 @@
                 </div>
                 <div class="w3-section w3-half">
                     <label><b>Rango</b></label>
-                    <input class="w3-input w3-border w3-margin-bottom" 
-                    name="id_rango_personal" type="number" placeholder="Ingresar Rango">
+                    <select name="rango" class="w3-select">
+                        <option value=""></option>
+                        <?php foreach ($rango as $item): ?>
+                            <option value="<?php echo $item->id_rango ?>"><?php echo $item->nombre_rango ?></option>
+                        <?php endforeach; ?>
+                        </select>
                 </div>
                 <div class="w3-section w3-half">
                     <label><b>Dependencia</b></label>
-                    <input class="w3-input w3-border w3-margin-bottom" 
-                    name="id_dependencia_personal" type="number" placeholder="Ingresar Dependencia">
+                    <select name="dependencia" class="w3-select">
+                        <option value=""></option>
+                        <?php foreach ($dependencia as $item): ?>
+                            <option value="<?php echo $item->id_dependencia ?>"><?php echo $item->nombre_dependencia ?></option>
+                        <?php endforeach; ?>
+                        </select>
+                </div>
+                <div class="w3-section w3-half">
+                    <label><b>Vehiculo</b></label>
+                    <select name="vehiculo" class="w3-select">
+                        <option value=""></option>
+                        <?php foreach ($vehiculo as $item): ?>
+                            <option value="<?php echo $item->id_vehiculo ?>"><?php echo $item->placa ?></option>
+                        <?php endforeach; ?>
+                        </select>
+                </div>
+                <div class="w3-section w3-half">
+                    <label><b>Rol</b></label>
+                    <select name="rol" class="w3-select">
+                        <option value=""></option>
+                        <?php foreach ($rol as $item): ?>
+                            <option value="<?php echo $item->id_rol ?>"><?php echo $item->nombre_rol ?></option>
+                        <?php endforeach; ?>
+                        </select>
                 </div>
                 <button type="submit" class="w3-button w3-block w3-section w3-padding w3-theme-button">Guardar</button>
             </form>
@@ -95,32 +125,34 @@
                 <th>Teléfono</th>
                 <th>Rango</th>
                 <th>Dependencia</th>
-                <th>Acciones</th>
+                <th>Vehiculo</th>
+                <th>Rol</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
             </tr>
             <?php if($personal): ?>
-                <?php foreach($personal as $row): ?>
+            <?php foreach ($personal as $row): ?>
             <tr>
-                <td><?php echo $row['nombres']; ?></td>
-                <td><?php echo $row['apellidos']; ?></td>
-                <td><?php echo $row['cedula']; ?></td>
-                <td><?php echo $row['fecha_nacimiento']; ?></td>
-                <td><?php echo $row['ciudad_nacimiento']; ?></td>
-                <td><?php echo $row['grupo_sanguineo']; ?></td>
-                <td><?php echo $row['telefono']; ?></td>
-                <td><?php echo $row['id_rango_personal']; ?></td>
-                <td><?php echo $row['id_dependencia_personal']; ?></td>
-                <td><a href="<?php echo base_url('editar/'.$row['id_personal']); ?>" 
+                <td><?php echo $row->nombres;?></td>
+                <td><?php echo $row->apellidos;?></td>
+                <td><?php echo $row->cedula;?></td>
+                <td><?php echo $row->fecha_nacimiento;?></td>
+                <td><?php echo $row->ciudad_nacimiento;?></td>
+                <td><?php echo $row->nombre_tipo_sangre;?></td>
+                <td><?php echo $row->telefono;?></td>
+                <td><?php echo $row->nombre_rango;?></td>
+                <td><?php echo $row->nombre_dependencia;?></td>
+                <td><?php echo $row->placa;?></td>
+                <td><?php echo $row->nombre_rol;?></td>
+                <td><a href="<?php echo base_url('editar-personal/'.$row->id_personal); ?>" 
                 onclick="mostrarModal2()" class="w3-button w3-small w3-round-large w3-theme-button w3-card-4">
                 <i class="fa-solid fa-pen-to-square"></i></a></td>
-                <td><a href="<?php echo base_url('eliminar/'.$row['id_personal']); ?>" class="w3-button w3-small w3-round-large w3-red w3-card-4">
+                <td><a href="<?php echo base_url('eliminar-personal/'.$row->id_personal); ?>" class="w3-button w3-small w3-round-large w3-red w3-card-4">
                 <i class="fa-solid fa-x"></i></a></td>
             </tr>
             <?php endforeach; ?>
             <?php endif; ?>
         </table>
     </div>
-    <?php echo $this->section('JS'); ?>
-    <?php echo $this->endSection('JS');?>
 
-    <?php echo $this->endSection('content');?>
-
+<?php echo $this->endSection('content'); ?>

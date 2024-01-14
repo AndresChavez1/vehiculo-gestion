@@ -8,6 +8,11 @@
             <form class="w3-container w3-card-4 w3-margin">
                 <h2 class="w3-center">Iniciar Sesión</h2>
                 <img src="<?php echo base_url('assets/img/login.svg') ?>" alt="login" style="width: 70%; height: 70%;">
+                <?php if (session()->get('success')): ?>
+                    <div class="w3-panel w3-green" role="alert">
+                        <?php echo session()->get('success') ?>
+                    </div>
+                <?php endif ?>    
                 <div class="w3-row w3-section">
                     <div class="w3-col" style="width: 50px;"><i class="fa-solid fa-envelope w3-xxlarge"></i></div>
                     <div class="w3-rest">

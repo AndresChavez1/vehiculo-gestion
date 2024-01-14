@@ -7,27 +7,27 @@
     <div class="w3-row-padding w3-margin-top">
         <div class="w3-third w3-section w3-hover-text-theme">
           <div class="w3-card-4 w3-center icon-container">
-            <a href=<?php echo base_url('gestion-personal'); ?>><img src="<?php echo base_url('assets/img/gestion_personal.svg'); ?>" alt="Gestión de Personal" class="svg"></a>
+            <a href=<?php echo base_url('personal'); ?>><img src="<?php echo base_url('assets/img/gestion_personal.svg'); ?>" alt="Gestión de Personal" class="svg"></a>
             <div class="w3-container w3-center">
-              <a href="<?php echo base_url('gestion-personal'); ?>"><h3>Gestión de Personal</h3></a>
+              <a href="<?php echo base_url('personal'); ?>"><h3>Gestión de Personal</h3></a>
             </div>
           </div>
         </div>
 
         <div class="w3-third w3-section w3-hover-text-theme">
             <div class="w3-card-4 w3-center icon-container">
-              <a href="<?php echo base_url('gestion-vehicular'); ?>"><img src="<?php echo base_url('assets/img/gestion_vehicular.svg'); ?>" class="svg" alt="Gestión Vehicular"></a>
+              <a href="<?php echo base_url('vehiculo'); ?>"><img src="<?php echo base_url('assets/img/gestion_vehicular.svg'); ?>" class="svg" alt="Gestión Vehicular"></a>
               <div class="w3-container w3-center">
-                <a href="<?php echo base_url('gestion-vehicular'); ?>"><h3>Gestión Vehicular</h3></a>
+                <a href="<?php echo base_url('vehiculo'); ?>"><h3>Gestión Vehicular</h3></a>
               </div>
             </div>
           </div>
 
           <div class="w3-third w3-section w3-hover-text-theme">
             <div class="w3-card-4 w3-center icon-container">
-              <a href="<?php echo base_url('gestion-dependencia'); ?>"><img src="<?php echo base_url('assets/img/gestion_dependencias.svg'); ?>" class="svg" alt="Gestión de dependencias"></a>
+              <a href="<?php echo base_url('dependencia'); ?>"><img src="<?php echo base_url('assets/img/gestion_dependencias.svg'); ?>" class="svg" alt="Gestión de dependencias"></a>
               <div class="w3-container w3-center">
-                <a href="<?php echo base_url('gestion-dependencia'); ?>"><h3>Gestión de Dependencias</h3></a>
+                <a href="<?php echo base_url('dependencia'); ?>"><h3>Gestión de Dependencias</h3></a>
               </div>
             </div>
           </div>

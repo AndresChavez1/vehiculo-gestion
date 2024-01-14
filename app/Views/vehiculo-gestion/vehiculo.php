@@ -2,36 +2,35 @@
 
 <?php echo $this->section('content'); ?>
 
+<!-- Contenido de la vista Gestión Vehicular -->
+
 <div class="w3-row-padding">
         <div class="w3-container w3-third">
             <input class="w3-input w3-border w3-round-xlarge" type="text" placeholder="Buscar" id="input" onkeyup="search()">
         </div>
         <div class="w3-container w3-col l1 w3-right w3-margin-right ">
             <button class="w3-button w3-xlarge w3-circle w3-theme-button w3-card-4"
-            onclick="document.getElementById('modal').style.display='block';">+</button>
+            onclick="mostrarModal()">+</button>
         </div>
     </div>
 
+    <?php
+     if(isset($_SESSION['msg'])){
+        echo $_SESSION['msg'];
+      }
+     ?>
+     
+<!-- Ventana Emergente Para Añadir Usuario-->
     <div id="modal" class="w3-modal">
         <div class="w3-modal-content w3-card-4 w3-theme" style="max-width: 600px;">
                 <div class="w3-center">
                     <br>
-                    <span onclick="document.getElementById('modal').style.display='none';" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Cerrar Ventana">X</span>
+                    <span onclick="cerrarModal()" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Cerrar Ventana">X</span>
                     <img src="<?php echo base_url('assets/img/add-car.svg') ?>" alt="User Icon" class=" w3-margin-top svg" >
                 </div>
                 
-            <form method="post" class="w3-container w3-row-padding" action="<?php echo base_url('/guardar-form') ?>">
-                <div class="w3-section w3-half">
-                    <!--<label><b>Tipo</b></label>
-                    <input class="w3-input w3-border w3-margin-bottom" 
-                    name="tipo" type="text" placeholder="Ingresar Tipo de Vehiculo"> -->
-                    <select name="tipo" id="" class="w3-select w3-border w3-margin-bottom w3-margin-top">
-                        <option value="" disabled selected>Elije el tipo de Vehiculo</option>
-                        <option value="1">Moto</option>
-                        <option value="2">Auto</option>
-                        <option value="3">Camión</option>
-                    </select>
-                </div>
+            <form method="POST" class="w3-container w3-row-padding" 
+            action="<?php echo base_url('/vehiculo-form') ?>">
                 <div class="w3-section w3-half">
                     <label><b>Placa</b></label>
                     <input class="w3-input w3-border w3-margin-bottom" 
@@ -60,7 +59,7 @@
                 <div class="w3-section w3-half">
                     <label><b>Kilometraje</b></label>
                     <input class="w3-input w3-border w3-margin-bottom" 
-                    name="kilometraje" type="number" placeholder="Ingresar Kilometraje">
+                    name="kilometraje" type="text" placeholder="Ingresar Kilometraje">
                 </div>
                 <div class="w3-section w3-half">
                     <label><b>Cilindraje</b></label>
@@ -70,25 +69,44 @@
                 <div class="w3-section w3-half">
                     <label><b>Carga</b></label>
                     <input class="w3-input w3-border w3-margin-bottom" 
-                    name="carga" type="number" placeholder="Ingresar Carga">
+                    name="carga" type="text" placeholder="Ingresar Carga">
+                </div>
+                <div class="w3-section w3-half">
+                    <label><b>Dependencia</b></label>
+                    <select name="dependencia" class="w3-select">
+                        <option value=""></option>
+                        <?php foreach ($dependencia as $item): ?>
+                            <option value="<?php echo $item->id_dependencia ?>"><?php echo $item->nombre_dependencia ?></option>
+                        <?php endforeach; ?>
+                        </select>
                 </div>
                 <div class="w3-section w3-half">
                     <label><b>Pasajeros</b></label>
                     <input class="w3-input w3-border w3-margin-bottom" 
-                    name="pasajeros" type="number" placeholder="Ingresar Pasajeros">
+                    name="pasajeros" type="text" placeholder="Ingresar Pasajeros">
                 </div>
-                <button class="w3-button w3-block w3-section w3-padding w3-theme-button">Guardar</button>
+                <div class="w3-section w3-half">
+                    <label><b>Tipo de Vehiculo</b></label>
+                    <select name="tipo" class="w3-select">
+                        <option value=""></option>
+                        <?php foreach ($tipo_vehiculo as $item): ?>
+                            <option value="<?php echo $item->id_tipo_vehiculo ?>"><?php echo $item->nombre_tipo ?></option>
+                        <?php endforeach; ?>
+                        </select>
+                </div>
+                <button type="submit" class="w3-button w3-block w3-section w3-padding w3-theme-button">Guardar</button>
             </form>
         </div>
     </div>
+
 
     <hr class="w3-border-theme">
 
     <div class="w3-responsive w3-container">
         <table class="w3-table w3-bordered w3-border w3-centered" id="table">
             <tr>
-                <th>Tipo de Vehículo</th>
                 <th>Placa</th>
+                <th>Tipo</th>
                 <th>Chasis</th>
                 <th>Marca</th>
                 <th>Modelo</th>
@@ -97,34 +115,33 @@
                 <th>Cilindraje</th>
                 <th>Carga</th>
                 <th>Pasajeros</th>
-                <th>Acciones</th>
-            </tr>
+                <th>Dependencia</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+                        </tr>
             <?php if($vehiculo): ?>
-                <?php foreach($vehiculo as $vehiculos): ?>
+            <?php foreach ($vehiculo as $row): ?>
             <tr>
-                <td><?php echo $vehiculos['tipo']; ?></td>
-                <td><?php echo $vehiculos['placa']; ?></td>
-                <td><?php echo $vehiculos['chasis']; ?></td>
-                <td><?php echo $vehiculos['marca']; ?></td>
-                <td><?php echo $vehiculos['modelo']; ?></td>
-                <td><?php echo $vehiculos['motor']; ?></td>
-                <td><?php echo $vehiculos['kilometraje']; ?></td>
-                <td><?php echo $vehiculos['cilindraje']; ?></td>
-                <td><?php echo $vehiculos['carga']; ?></td>
-                <td><?php echo $vehiculos['pasajeros']; ?></td>
-                <td><a href="<?php echo base_url('editar-vehiculo/'.$vehiculos['id_vehiculo']); ?>" 
+                <td><?php echo $row->placa;?></td>
+                <td><?php echo $row->nombre_tipo;?></td>
+                <td><?php echo $row->chasis;?></td>
+                <td><?php echo $row->marca;?></td>
+                <td><?php echo $row->modelo;?></td>
+                <td><?php echo $row->motor;?></td>
+                <td><?php echo $row->kilometraje;?></td>
+                <td><?php echo $row->cilindraje; ?></td>
+                <td><?php echo $row->carga;?></td>
+                <td><?php echo $row->pasajeros;?></td>
+                <td><?php echo $row->nombre_dependencia;?></td>
+                <td><a href="<?php echo base_url('editar-vehiculo/'.$row->id_vehiculo); ?>" 
                 onclick="mostrarModal2()" class="w3-button w3-small w3-round-large w3-theme-button w3-card-4">
                 <i class="fa-solid fa-pen-to-square"></i></a></td>
-                <td><a href="<?php echo base_url('eliminar-vehiculo/'.$vehiculos['id_vehiculo']); ?>" class="w3-button w3-small w3-round-large w3-red w3-card-4">
+                <td><a href="<?php echo base_url('eliminar-vehiculo/'.$row->id_vehiculo); ?>" class="w3-button w3-small w3-round-large w3-red w3-card-4">
                 <i class="fa-solid fa-x"></i></a></td>
             </tr>
             <?php endforeach; ?>
             <?php endif; ?>
         </table>
     </div>
-
-<?php echo $this->section('JS'); ?>
-
-<?php echo $this->endSection('JS'); ?>
 
 <?php echo $this->endSection('content'); ?>

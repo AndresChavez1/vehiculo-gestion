@@ -6,10 +6,29 @@ use App\Models\PersonalModel;
 class GestionPersonal extends BaseController{
 
 
+    public function getRango(){
+        $personalModel = new PersonalModel();
+
+        $query = $personalModel
+        ->table('rangos')
+        ->select('*')
+        ->findAll();
+        echo '<pre>';
+        print_r($query);
+        echo  '</pre>';
+    }
     public function index()
     {
         $personalModel = new PersonalModel();
-        $data['personal'] = $personalModel->orderBy('id_personal', 'DESC')->findAll();
+
+        $query = $personalModel
+        ->select('personal.*')
+        ->join('rangos', 'personal.id_rango_personal = rangos.id_rango', 'left')
+        ->orderBy('personal.id_personal', 'DESC');
+        $rango = $this->getRango();
+        $data['personal'] = $query->findAll();
+        $data['rango'] = $rango;
+        //$data['personal'] = $personalModel->orderBy('id_personal', 'DESC')->findAll();
         return view('vehiculo-gestion/gestion-personal', $data);
     }
     
@@ -34,7 +53,7 @@ class GestionPersonal extends BaseController{
             'id_rango_personal' => $this->request->getVar('id_rango_personal'),
             'id_dependencia_personal' => $this->request->getVar('id_dependencia_personal')
         ];
-        $personalModel->insert($data);
+        $personalModel->insert($data);  
         return $this->response->redirect(base_url('/gestion-personal'));
     }
 
