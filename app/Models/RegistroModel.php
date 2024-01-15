@@ -44,8 +44,5 @@ class RegistroModel extends Model {
         return $result;
     }
 
-    public function insertId(){
-        return $this->db->insertID();
-    }
 
 }

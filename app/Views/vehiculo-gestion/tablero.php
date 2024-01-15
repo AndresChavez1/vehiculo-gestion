@@ -2,7 +2,7 @@
 
 <?php echo $this->section('content'); ?>
 
-<h1 class="w3-center">Tablero</h1>
+<h1 class="w3-center">Tablero <?php echo session()->get('nombres'). ' '. session()->get('apellidos') ?></h1>
 
     <div class="w3-row-padding w3-margin-top">
         <div class="w3-third w3-section w3-hover-text-theme">

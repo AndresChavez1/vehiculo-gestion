@@ -28,8 +28,11 @@ class RegistroCredencialesModel extends MOdel {
     }
 
     protected function passwordHash(array $data){
-        if(! isset($data['data']['contraseña']))
+        if(isset($data['data']['contraseña']))
             $data['data']['contraseña'] = password_hash($data['data']['contraseña'], PASSWORD_DEFAULT);
         return $data;
-    }   
+    }
+
+    public function correoData(){
+    }
 }

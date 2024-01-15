@@ -8,7 +8,7 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 
 $routes->get('/inicio', 'Inicio::index');
-$routes->get('/login', 'Registro::login');
+$routes->match(['get', 'post'],'/login', 'Registro::login');
 $routes->match(['get', 'post'],'/registro', 'Registro::registro');
 $routes->get('/tablero', 'Tablero::index');
 

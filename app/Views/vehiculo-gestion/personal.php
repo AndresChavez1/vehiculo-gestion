@@ -114,7 +114,8 @@
     <hr class="w3-border-theme">
 
     <div class="w3-responsive w3-container">
-        <table class="w3-table w3-bordered w3-border w3-centered" id="table">
+        <table class="w3-table w3-bordered w3-border w3-centered" id="my_table">
+            <thead>
             <tr>
                 <th>Nombre</th>
                 <th>Apellido</th>
@@ -130,6 +131,8 @@
                 <th>Editar</th>
                 <th>Eliminar</th>
             </tr>
+            </thead>
+            <tbody>
             <?php if($personal): ?>
             <?php foreach ($personal as $row): ?>
             <tr>
@@ -152,7 +155,17 @@
             </tr>
             <?php endforeach; ?>
             <?php endif; ?>
+            </tbody>
         </table>
     </div>
+    <?php echo $this->section('JS'); ?>
 
-<?php echo $this->endSection('content'); ?>
+<script>
+    $(document).ready(function() {
+    $('#my_table').DataTable();
+  });
+</script>
+
+<?php echo $this->endSection(); ?>
+    <?php echo $this->endSection(); ?>
+

@@ -9,9 +9,59 @@ class Registro extends BaseController {
     
     public function login()
     {   
+        $credencial = new RegistroCredencialesModel();
+        $registro = new RegistroModel();
         helper(['form']);
         $data = [];
+
+        //
+        if($this->request->getMethod() == 'post'){
+            //Reglas de validación 
+            $rules = [
+                'correo' => 'required|max_length[50]valid_email',
+                'contraseña' => 'required|min_length[8]|max_length[255]|validar[correo, contraseña]'
+            ];
+            //Mensajes de error customizados
+            $errors = [
+                'contraseña' => [
+                    'validar' => 'Correo o Contraseña incorrectos'
+                ]
+            ];
+            //Validación no exitosa
+            if(! $this->validate($rules, $errors)){
+                $data['validation'] = $this->validator;
+            }else{
+
+                $user = $credencial
+                ->select('personal.*, credenciales.correo')
+                ->join('personal', 'personal.id_personal = credenciales.personal')
+                ->where('correo', $this->request->getPost('correo'))->first();
+                $this->setUser($user);
+                
+
+                return redirect()->to(base_url('/tablero'));
+             }
+        }
         return view('vehiculo-gestion/login', $data);
+    }
+
+    private function setUser($user){
+        $data = [
+            'id_personal' => $user['id_personal'],
+            'nombres' => $user['nombres'],
+            'apellidos' => $user['apellidos'],
+            'telefono' => $user['telefono'],
+            'cedula' => $user['cedula'],
+            'tipo_sangre' => $user['tipo_sangre'],
+            'ciudad_nacimiento' => $user['ciudad_nacimiento'],
+            'fecha_nacimiento' => $user['fecha_nacimiento'],
+            'correo' => $user['correo'],
+            'rol' => $user['rol'],
+            'isLoggedIn' => true,
+        ];
+
+        session()->set($data);
+        return true;
     }
 
     public function registro()
@@ -54,18 +104,21 @@ class Registro extends BaseController {
                     'fecha_nacimiento' =>$this->request->getPost('fecha_nacimiento'),
                     'telefono' =>$this->request->getPost('telefono'),
                     'rango' =>$this->request->getPost('rango')
-                ];
+                ]; 
 
                 $dataCredencial = [
                     'correo' =>$this->request->getPost('correo'),
-                    'contraseña' =>$this->request->getPost('contraseña'),
-                    'personal' => $registro->insertID()
+                    'contraseña' =>$this->request->getPost('contraseña')
                 ];
 
+                $registro->transStart();
                 $registro->save($dataUsuario);
+                $id_usuario = $registro->insertID();
+                $dataCredencial['personal'] = $id_usuario;
                 $credencial->save($dataCredencial);
+                $registro->transComplete();
                 $session = session();
-                $session->setFlashdata('success', 'Successful Registration');
+                $session->setFlashdata('success', 'Registro Exitoso');
                 return redirect()->to(base_url('/login'));
             }
         }
