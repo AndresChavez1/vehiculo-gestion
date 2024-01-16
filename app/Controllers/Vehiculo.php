@@ -26,7 +26,7 @@ class Vehiculo extends BaseController{
             'cilindraje' => $this->request->getPost('cilindraje'),
             'carga' => $this->request->getPost('carga'),
             'pasajeros' => $this->request->getPost('pasajeros'),
-            'dependencia' => $this->request->getPost('dependencia')
+            'subcircuito' => $this->request->getPost('subcircuito')
         ];
         $model->insert($data);
         return $this->response->redirect(base_url('/vehiculo'));
@@ -37,7 +37,7 @@ class Vehiculo extends BaseController{
 
         $data['vehiculo_obj'] = $model->where('id_vehiculo', $id)->first();
         $data['tipo_vehiculo_obj'] = $model->getTipo();
-        $data['dependencia_obj'] = $model->getDependencia();
+        $data['subcircuito_obj'] = $model->getSubcircuito();
 
         return view('vehiculo-gestion/vehiculo-edit', $data);
     }
@@ -56,7 +56,7 @@ class Vehiculo extends BaseController{
             'cilindraje' => $this->request->getPost('cilindraje'),
             'carga' => $this->request->getPost('carga'),
             'pasajeros' => $this->request->getPost('pasajeros'),
-            'dependencia' => $this->request->getPost('dependencia')
+            'subcircuito' => $this->request->getPost('subcircuito')
         ];
         $model->update($id, $data);
         return $this->response->redirect(base_url('/vehiculo'));

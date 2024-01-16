@@ -6,8 +6,8 @@ use CodeIgniter\Model;
 
 class CircuitoModel extends Model {
 
-    protected $table = 'circuidto';
-    protected $primaryKey = 'id_circuidto';
+    protected $table = 'circuito';
+    protected $primaryKey = 'id_circuito';
 
     protected $useAutoIncrement = true;
 
@@ -18,6 +18,7 @@ class CircuitoModel extends Model {
         'nombre_circuito',
         'codigo_circuito',
         'numero_subcircuitos',
-        'distrito'
+        'distrito',
+        'parroquia'
     ];
 }

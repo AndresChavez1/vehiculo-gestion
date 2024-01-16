@@ -6,12 +6,17 @@
 
 <div class="w3-row-padding">
         <div class="w3-container w3-third">
-            <input class="w3-input w3-border w3-round-xlarge" type="text" placeholder="Buscar" id="input" onkeyup="search()">
         </div>
-        <div class="w3-container w3-col l1 w3-right w3-margin-right ">
-            <button class="w3-button w3-xlarge w3-circle w3-theme-button w3-card-4"
-            onclick="mostrarModal()">+</button>
-        </div>
+        <div class="w3-dropdown-hover w3-right">
+            <button class="w3-button w3-xlarge w3-circle w3-theme-button w3-card-4">+</button>
+            <div class="w3-dropdown-content w3-bar-block w3-border" style="right:0">
+             <a href="<?php echo base_url('provincia-form') ?>" class="w3-button w3-bar-item w3-hover-green">Provincia </a>
+             <a href="<?php echo base_url('distrito-form') ?>" class="w3-button w3-bar-item w3-hover-red">Distrito </a>
+             <a href="<?php echo base_url('parroquia-form') ?>" class="w3-button w3-bar-item w3-hover-blue">Parroquia </a>
+             <a href="<?php echo base_url('circuito-form') ?>" class="w3-button w3-bar-item w3-hover-purple">Circuito </a>
+             <a href="<?php echo base_url('subcircuito-form') ?>" class="w3-button w3-bar-item w3-hover-purple">Subcircuito </a>
+            </div>
+          </div>
         <!--<div class="w3-dropdown-hover w3-right">
 
 
@@ -26,88 +31,18 @@
           </div>-->
     </div>
 
-    <div id="modal" class="w3-modal">
-        <div class="w3-modal-content w3-card-4 w3-theme" style="max-width: 600px;">
-                <div class="w3-center">
-                    <br>
-                    <span onclick="document.getElementById('modal').style.display='none';" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Cerrar Ventana">X</span>
-                    <img src="<?php echo base_url('assets/img/add-dep.svg') ?>" alt="User Icon" class=" w3-margin-top svg" >
-                </div>
-                
-            <form class="w3-container w3-row-padding" action="<?php echo base_url('dependencia-general') ?>" 
-            method="post">
-            <div class="w3-section w3-row">
-                    <label><b>Dependencia</b></label>
-                    <select name="dependencia" id="" class="w3-select">
-                        <option value="" disabled selected>Seleccionar Dependencia</option>
-                        <?php foreach($dependencia as $item): ?>
-                        <option value="<?php echo $item->id_dependencia; ?>"  ><?php echo $item->nombre_dependencia; ?></option>
-                        <?php endforeach ?>
-                    </select>
-                </div>
-                <div class="w3-section w3-row">
-                    <label><b>Parroquia</b></label>
-                    <select name="parroquia" id="" class="w3-select">
-                        <option value="" disabled selected>Seleccionar Parroquia</option>
-                        <?php foreach($parroquia as $item): ?>
-                        <option value="<?php echo $item->id_parroquia; ?>"  ><?php echo $item->nombre_parroquia; ?></option>
-                        <?php endforeach ?>
-                    </select>
-                </div>
-                <div class="w3-section w3-row">
-                    <label><b>Distrito</b></label>
-                    <select name="distrito" id="" class="w3-select">
-                        <option value="" disabled selected>Seleccionar Distrito</option>
-                        <?php foreach($distrito as $item): ?>
-                        <option value="<?php echo $item->id_distrito; ?>"  ><?php echo $item->nombre_distrito; ?></option>
-                        <?php endforeach ?>
-                    </select>
-                </div>
-                <div class="w3-section w3-row">
-                    <label><b>Circuito</b></label>
-                    <select name="circuito" id="" class="w3-select">
-                        <option value="" disabled selected>Seleccionar Circuito</option>
-                        <?php foreach($circuito as $item): ?>
-                        <option value="<?php echo $item->id_circuito; ?>"  ><?php echo $item->nombre_circuito; ?></option>
-                        <?php endforeach ?>
-                    </select>
-                </div>
-                <div class="w3-section w3-row">
-                    <label><b>Subcircuito</b></label>
-                    <select name="subcircuito" id="" class="w3-select">
-                        <option value="" disabled selected>Seleccionar Subcircuito</option>
-                        <?php foreach($subcircuito as $item): ?>
-                        <option value="<?php echo $item->id_subcircuito; ?>"  ><?php echo $item->nombre_subcircuito; ?></option>
-                        <?php endforeach ?>
-                    </select>
-                </div>
-                <div class="w3-section w3-half">
-                    <label><b>Código de Distrito</b></label>
-                    <input class="w3-input w3-border w3-margin-bottom" name="codigo_distrito" type="text" placeholder="Ingresar Código de Distrito">
-                </div>
-                <div class="w3-section w3-half">
-                    <label><b>Código Circuito</b></label>
-                    <input class="w3-input w3-border w3-margin-bottom" name="codigo_circuito" type="text" placeholder="Ingresar Código Circuito">
-                </div>
-                <div class="w3-section w3-half">
-                    <label><b>Código Subcircuito</b></label>
-                    <input class="w3-input w3-border w3-margin-bottom" name="codigo_subcircuito" type="text" placeholder="Ingresar Código Subcircuito">
-                </div>
-                <button class="w3-button w3-block w3-section w3-padding w3-theme-button">Guardar</button>
-            </form>
-        </div>
-    </div>
 
 
     <hr class="w3-border-theme">
 
     <div class="w3-responsive w3-container">
         <h1>Dependencia</h1>
-        <table class="w3-table w3-bordered w3-border w3-centered" id="table">
+        <table class="w3-table w3-bordered w3-border w3-centered" id="my_table">
+            <thead>
             <tr>
-                <th>Dependencia</th>
+                <th>Provincia</th>
                 <th>N° Distritos</th>
-                <th>Parroquia   </th>
+                <th>Parroquia</th>
                 <th>Código Distrito</th>
                 <th>Nombre Distrito</th>
                 <th>N° Circuitos</th>
@@ -116,13 +51,13 @@
                 <th>N° Subcircuitos</th>
                 <th>Código Subcircuito</th>
                 <th>Nombre Subcircuito</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
             </tr>
+            </thead>
+            <tbody>
                 <?php if($dependencia): ?>
                 <?php foreach($dependencia as $row): ?>
             <tr>
-                <td><?php echo $row->nombre_dependencia ?></td>
+                <td><?php echo $row->nombre_provincia ?></td>
                 <td><?php echo $row->numero_distritos; ?></td>
                 <td><?php echo $row->nombre_parroquia; ?></td>
                 <td><?php echo $row->codigo_distrito ?></td>
@@ -133,16 +68,197 @@
                 <td><?php echo $row->numero_subcircuitos; ?></td>
                 <td><?php echo $row->codigo_subcircuito; ?></td>
                 <td><?php echo $row->nombre_subcircuito; ?></td>
-                <td><button class="w3-button w3-small w3-round-large w3-theme-button w3-card-4"><i class="fa-solid fa-pen-to-square"></i></button></td>
-                <td><button class="w3-button w3-small w3-round-large w3-red w3-card-4"><i class="fa-solid fa-x"></i></button></td>
             </tr>
                 <?php endforeach; ?>
             <?php endif; ?>
+            </tbody>
         </table>
     </div>
 
-<?php echo $this->endSection('content'); ?>
+    <div class="w3-responsive w3-container" style="margin-left: 30px; margin-right: 30px;">
+        <h1>Provincia</h1>
+        <table class="w3-table w3-bordered w3-border" id="my_second_table">
+            <thead>
+            <tr>
+                <th>Provincia</th>
+                <th>Número de Distritos</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+            </thead>
+            <tbody>
+                <?php if($provincia): ?>
+                <?php foreach($provincia as $row): ?>
+            <tr>
+                <td><?php echo $row->nombre_provincia ?></td>
+                <td><?php echo $row->numero_distritos ?></td>
+                <td><a href="<?php echo base_url('editar-provincia/'.$row->id_provincia); ?>" 
+                 class="w3-button w3-small w3-round-large w3-theme-button w3-card-4">
+                <i class="fa-solid fa-pen-to-square"></i></a></td>
+                <td><a href="<?php echo base_url('eliminar-provincia/'.$row->id_provincia); ?>" class="w3-button w3-small w3-round-large w3-red w3-card-4">
+                <i class="fa-solid fa-x"></i></a></td>
+            </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
 
-<?php echo $this->section('JS'); ?>
-    <?php echo $this->endSection('JS'); ?>
+    <div class="w3-responsive w3-container" style="margin-left: 30px; margin-right: 30px;">
+        <h1>Distrito</h1>
+        <table class="w3-table w3-bordered w3-border" id="my_third_table">
+            <thead>
+            <tr>
+                <th>Distrito</th>
+                <th>Código de Distrito</th>
+                <th>Número de Circuitos</th>
+                <th>Provincia</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+            </thead>
+            <tbody>
+                <?php if($distrito): ?>
+                <?php foreach($distrito as $row): ?>
+            <tr>
+                <td><?php echo $row->nombre_distrito ?></td>
+                <td><?php echo $row->codigo_distrito; ?></td>
+                <td><?php echo $row->numero_circuitos ?></td>
+                <td><?php echo $row->nombre_provincia; ?></td>
+                <td><a href="<?php echo base_url('editar-distrito/'.$row->id_distrito); ?>" 
+                 class="w3-button w3-small w3-round-large w3-theme-button w3-card-4">
+                <i class="fa-solid fa-pen-to-square"></i></a></td>
+                <td><a href="<?php echo base_url('eliminar-distrito/'.$row->id_distrito); ?>" class="w3-button w3-small w3-round-large w3-red w3-card-4">
+                <i class="fa-solid fa-x"></i></a></td>
+            </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="w3-responsive w3-container" style="margin-left: 30px; margin-right: 30px;">
+        <h1>Parroquia</h1>
+        <table class="w3-table w3-bordered w3-border" id="my_fourth_table">
+            <thead>
+            <tr>
+                <th>Parroquia</th>
+                <th>Distrito</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+            </thead>
+            <tbody>
+                <?php if($parroquia): ?>
+                <?php foreach($parroquia as $row): ?>
+            <tr>
+                <td><?php echo $row->nombre_parroquia ?></td>
+                <td><?php echo $row->nombre_distrito; ?></td>
+                <td><a href="<?php echo base_url('editar-parroquia/'.$row->id_parroquia); ?>" 
+                 class="w3-button w3-small w3-round-large w3-theme-button w3-card-4">
+                <i class="fa-solid fa-pen-to-square"></i></a></td>
+                <td><a href="<?php echo base_url('eliminar-parroquia/'.$row->id_parroquia); ?>" class="w3-button w3-small w3-round-large w3-red w3-card-4">
+                <i class="fa-solid fa-x"></i></a></td>
+            </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="w3-responsive w3-container" style="margin-left: 30px; margin-right: 30px;">
+        <h1>Circuito</h1>
+        <table class="w3-table w3-bordered w3-border" id="my_fifth_table">
+            <thead>
+            <tr>
+                <th>Circuito</th>
+                <th>Código Circuito</th>
+                <th>Numero de Subcircuitos</th>
+                <th>Distrito</th>
+                <th>Parroquia</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+            </thead>
+            <tbody>
+                <?php if($circuito): ?>
+                <?php foreach($circuito as $row): ?>
+            <tr>
+                <td><?php echo $row->nombre_circuito ?></td>
+                <td><?php echo $row->codigo_circuito; ?></td>
+                <td><?php echo $row->numero_subcircuitos; ?></td>
+                <td><?php echo $row->nombre_distrito; ?></td>
+                <td><?php echo $row->nombre_parroquia; ?></td>
+                <td><a href="<?php echo base_url('editar-circuito/'.$row->id_circuito); ?>" 
+                 class="w3-button w3-small w3-round-large w3-theme-button w3-card-4">
+                <i class="fa-solid fa-pen-to-square"></i></a></td>
+                <td><a href="<?php echo base_url('eliminar-circuito/'.$row->id_circuito); ?>" class="w3-button w3-small w3-round-large w3-red w3-card-4">
+                <i class="fa-solid fa-x"></i></a></td>
+            </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="w3-responsive w3-container" style="margin-left: 30px; margin-right: 30px;">
+        <h1>Subcircuito</h1>
+        <table class="w3-table w3-bordered w3-border" id="my_sixth_table">
+            <thead>
+            <tr>
+                <th>Subcircuito</th>
+                <th>Código subcircuito</th>
+                <th>Circuito</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+            </thead>
+            <tbody>
+                <?php if($subcircuito): ?>
+                <?php foreach($subcircuito as $row): ?>
+            <tr>
+                <td><?php echo $row->nombre_subcircuito ?></td>
+                <td><?php echo $row->codigo_subcircuito; ?></td>
+                <td><?php echo $row->nombre_circuito; ?></td>
+                <td><a href="<?php echo base_url('editar-subcircuito/'.$row->id_subcircuito); ?>" 
+                 class="w3-button w3-small w3-round-large w3-theme-button w3-card-4">
+                <i class="fa-solid fa-pen-to-square"></i></a></td>
+                <td><a href="<?php echo base_url('eliminar-subcircuito/'.$row->id_subcircuito); ?>" class="w3-button w3-small w3-round-large w3-red w3-card-4">
+                <i class="fa-solid fa-x"></i></a></td>
+            </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
+    <?php echo $this->section('JS'); ?>
+    <script>
+    $(document).ready(function() {
+    $('#my_table').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+  $(document).ready(function() {
+    $('#my_second_table').DataTable();
+  });
+  $(document).ready(function() {
+    $('#my_third_table').DataTable();
+  });
+  $(document).ready(function() {
+    $('#my_fourth_table').DataTable();
+  });
+  $(document).ready(function() {
+    $('#my_fifth_table').DataTable();
+  });
+  $(document).ready(function() {
+    $('#my_sixth_table').DataTable();
+  });
+</script>
+<?php echo $this->endSection(); ?>
+
+
+    <?php echo $this->endSection(); ?>
 

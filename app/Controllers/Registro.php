@@ -124,4 +124,74 @@ class Registro extends BaseController {
         }
         return view('vehiculo-gestion/registro', $data);
     }
+
+    public function perfil(){
+        $credencial = new RegistroCredencialesModel();
+        $registro = new RegistroModel();
+        helper(['form']);
+        $data['rol'] = $registro->getRol();
+        $data['rango'] = $registro->getRango();
+        $data['tipo_sangre'] = $registro->getTipoSangre();
+
+        if($this->request->getMethod() == 'post'){
+            //Reglas de validación 
+            $rules = [
+                'nombres' => 'required|max_length[50]|alpha_space',
+                'apellidos' => 'required|max_length[50]|alpha_space',
+                'fecha_nacimiento' => 'required|valid_date|',
+                'ciudad_nacimiento' => 'required|alpha_space',
+                'telefono' => 'required|regex_match[^0\d{9}$]',
+            ];
+
+            if($this->request->getPost('contraseña') != '' ){
+                $rules['contraseña'] = 'required|max_length[50]';
+            }
+
+            if(! $this->validate($rules)){
+                $data['validation'] = $this->validator;
+            }else{
+                //Validación exitosa
+                $dataUsuario = [
+                    'id_personal' => session()->get('id_personal'),
+                    'nombres' =>$this->request->getPost('nombres'),
+                    'apellidos' =>$this->request->getPost('apellidos'),
+                    'ciudad_nacimiento' =>$this->request->getPost('ciudad_nacimiento'),
+                    'fecha_nacimiento' =>$this->request->getPost('fecha_nacimiento'),
+                    'telefono' =>$this->request->getPost('telefono'),
+                ]; 
+
+                // $dataCredencial = [
+                //     'contraseña' =>$this->request->getPost('contraseña')
+                // ];
+
+                if($this->request->getPost('contraseña') != '' ){
+                    $dataCredencial['contraseña'] = $this->request->getPost('contraseña');
+                }
+
+                $registro->transStart();
+                $registro->save($dataUsuario);
+                $id_usuario = $registro->insertID();
+                $dataCredencial['personal'] = $id_usuario;
+                $credencial->save($dataCredencial);
+                $registro->transComplete();
+                session()->setFlashdata('success', 'Actualización Exitosa');
+                return redirect()->to(base_url('perfil'));
+            }
+        
+        }
+
+        $data['user'] = $registro
+        ->join('credenciales', 'credenciales.personal = personal.id_personal')
+        ->where('id_personal', session()->get('id_personal'))->first();
+        return view('vehiculo-gestion/perfil', $data);
+    }
+
+    public function logout(){
+        session()->destroy();
+        return redirect()->to(base_url('inicio'));
+    }
+
+    public function changePass(){
+        return view('vehiculo-gestion/cambiar-contrasenia');
+    }
 }

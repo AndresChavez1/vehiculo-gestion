@@ -35,15 +35,6 @@
                     name="fecha_nacimiento" type="date" value="<?php echo $personal_obj['fecha_nacimiento']; ?>">
                 </div>
                 <div class="w3-section w3-half">
-                    <label><b>Grupo Sanguineo</b></label>
-                        <select name="tipo_sangre" class="w3-select">
-                            <option value="<?php echo $personal_obj['tipo_sangre']; ?>"><?php echo $personal_obj['tipo_sangre']; ?></option>
-                            <?php foreach ($tipo_sangre_obj as $item): ?>
-                                <option value="<?php echo $item->id_tipo_sangre; ?>"><?php echo $item->nombre_tipo_sangre; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                </div>
-                <div class="w3-section w3-half">
                     <label><b>Ciudad de nacimiento</b></label>
                     <input class="w3-input w3-border w3-margin-bottom" 
                     name="ciudad_nacimiento" type="text" value="<?php echo $personal_obj['ciudad_nacimiento']; ?>">
@@ -53,7 +44,16 @@
                     <input class="w3-input w3-border w3-margin-bottom" 
                     name="telefono" type="text" value="<?php echo $personal_obj['telefono']; ?>">
                 </div>
-                <div class="w3-section w3-half">
+                <div class="w3-section w3-row">
+                    <label><b>Grupo Sanguineo</b></label>
+                        <select name="tipo_sangre" class="w3-select">
+                            <option value="<?php echo $personal_obj['tipo_sangre']; ?>"><?php echo $personal_obj['tipo_sangre']; ?></option>
+                            <?php foreach ($tipo_sangre_obj as $item): ?>
+                                <option value="<?php echo $item->id_tipo_sangre; ?>"><?php echo $item->nombre_tipo_sangre; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                </div>
+                <div class="w3-section w3-row">
                     <label><b>Rango</b></label>
                     <select name="rango" class="w3-select">
                         <option value="<?php echo $personal_obj['rango']; ?>"><?php echo $personal_obj['rango']; ?></option>
@@ -62,16 +62,16 @@
                         <?php endforeach; ?>
                         </select>
                 </div>
-                <div class="w3-section w3-half">
-                    <label><b>Dependencia</b></label>
-                    <select name="dependencia" class="w3-select">
-                        <option value="<?php echo $personal_obj['dependencia']; ?>"><?php echo $personal_obj['dependencia']; ?></option>
-                        <?php foreach ($dependencia_obj as $item): ?>
-                            <option value="<?php echo $item->id_dependencia; ?>"><?php echo $item->nombre_dependencia; ?></option>
+                <div class="w3-section w3-row">
+                    <label><b>Subcircuito</b></label>
+                    <select name="subcircuito" class="w3-select">
+                        <option value="<?php echo $personal_obj['subcircuito']; ?>"><?php echo $personal_obj['subcircuito']; ?></option>
+                        <?php foreach ($subcircuito_obj as $item): ?>
+                            <option value="<?php echo $item->id_subcircuito; ?>"><?php echo $item->nombre_subcircuito; ?></option>
                         <?php endforeach; ?>
                         </select>
                 </div>
-                <div class="w3-section w3-half">
+                <div class="w3-section w3-row">
                     <label><b>Vehiculo</b></label>
                     <select name="vehiculo" class="w3-select">
                         <option value="<?php echo $personal_obj['vehiculo']; ?>"><?php echo $personal_obj['vehiculo']; ?></option>
@@ -80,7 +80,7 @@
                         <?php endforeach; ?>
                         </select>
                 </div>
-                <div class="w3-section w3-half">
+                <div class="w3-section w3-row">
                     <label><b>Rol</b></label>
                     <select name="rol" class="w3-select">
                         <option value="<?php echo $personal_obj['rol']; ?>"><?php echo $personal_obj['rol']; ?></option>

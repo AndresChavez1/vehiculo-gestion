@@ -8,7 +8,6 @@
         <div class="w3-modal-content w3-card-4 w3-theme" style="max-width: 600px;">
                 <div class="w3-center">
                     <br>
-                    <span onclick="cerrarModal()" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Cerrar Ventana">X</span>
                     <img src="<?php echo base_url('assets/img/add-car.svg') ?>" alt="User Icon" class=" w3-margin-top svg" >
                 </div>
                 
@@ -34,7 +33,7 @@
                 <div class="w3-section w3-half">
                     <label><b>Modelo</b></label>
                     <input class="w3-input w3-border w3-margin-bottom" 
-                    name="Modelo" type="text" placeholder="Ingresar Modelo" value="<?php echo $vehiculo_obj['modelo'];?>">
+                    name="modelo" type="text" placeholder="Ingresar Modelo" value="<?php echo $vehiculo_obj['modelo'];?>">
                 </div>
                 <div class="w3-section w3-half">
                     <label><b>Motor</b></label>
@@ -57,11 +56,11 @@
                     name="carga" type="text" placeholder="Ingresar Carga" value="<?php echo $vehiculo_obj['carga'];?>">
                 </div>
                 <div class="w3-section w3-half">
-                    <label><b>Dependencia</b></label>
-                    <select name="dependencia" class="w3-select">
-                        <option value="<?php echo $vehiculo_obj['dependencia']; ?>"><?php echo $vehiculo_obj['dependencia']; ?></option>
-                        <?php foreach ($dependencia_obj as $item): ?>
-                            <option value="<?php echo $item->id_dependencia; ?>"><?php echo $item->nombre_dependencia; ?></option>
+                    <label><b>subcircuito</b></label>
+                    <select name="subcircuito" class="w3-select">
+                        <option value="<?php echo $vehiculo_obj['subcircuito']; ?>"><?php echo $vehiculo_obj['subcircuito']; ?></option>
+                        <?php foreach ($subcircuito_obj as $item): ?>
+                            <option value="<?php echo $item->id_subcircuito; ?>"><?php echo $item->nombre_subcircuito; ?></option>
                         <?php endforeach; ?>
                         </select>
                 </div>

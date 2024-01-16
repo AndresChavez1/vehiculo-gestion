@@ -37,7 +37,7 @@ class Personal extends BaseController{
         $data['tipo_sangre_obj'] = $model->getTipoSangre();
         $data['vehiculo_obj'] = $model->getVehiculo();
         $data['rol_obj'] = $model->getRol();
-        $data['dependencia_obj'] = $model->getDependencia();
+        $data['subcircuito_obj'] = $model->getSubcircuito();
         return view('vehiculo-gestion/personal-edit', $data);
     }
 

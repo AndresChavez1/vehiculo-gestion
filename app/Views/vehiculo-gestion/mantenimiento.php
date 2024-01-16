@@ -6,19 +6,12 @@
 
 <div class="w3-row-padding">
         <div class="w3-container w3-third">
-            <input class="w3-input w3-border w3-round-xlarge" type="text" placeholder="Buscar" id="input" onkeyup="search()">
         </div>
         <div class="w3-container w3-col l1 w3-right w3-margin-right ">
             <button class="w3-button w3-xlarge w3-circle w3-theme-button w3-card-4"
             onclick="mostrarModal()">+</button>
         </div>
     </div>
-
-    <?php
-     if(isset($_SESSION['msg'])){
-        echo $_SESSION['msg'];
-      }
-     ?>
      
 <!-- Ventana Emergente Para Añadir Usuario-->
     <div id="modal" class="w3-modal">
@@ -66,7 +59,7 @@
                 <div class="w3-section w3-half">
                     <label><b>Fecha de Ingreso:</b></label>
                     <input class="w3-input w3-border w3-margin-bottom" 
-                    name="fecha_ingreso" type="text" placeholder="Ingresar Fecha de Ingreso">
+                    name="fecha_ingreso" type="date" placeholder="Ingresar Fecha de Ingreso">
                 </div>
                 <div class="w3-section w3-row">
                     <label><b>Detalle</b></label>
@@ -82,7 +75,8 @@
     <hr class="w3-border-theme">
 
     <div class="w3-responsive w3-container">
-        <table class="w3-table w3-bordered w3-border w3-centered" id="table">
+        <table class="w3-table w3-bordered w3-border w3-centered" id="my_table">
+            <thead>
             <tr>
                 <th>Solicitud N°</th>
                 <th>Fecha y hora de ingreso</th>
@@ -96,7 +90,9 @@
                 <th>Asunto</th>
                 <th>Detalle</th>
                 <th>Eliminar</th>
-                        </tr>
+            </tr>
+            </thead>
+            <tbody>
             <?php if($mantenimiento): ?>
             <?php foreach ($mantenimiento as $row): ?>
             <tr>
@@ -116,7 +112,22 @@
             </tr>
             <?php endforeach; ?>
             <?php endif; ?>
+            </tbody>
         </table>
     </div>
 
-<?php echo $this->endSection('content'); ?>
+    <?php echo $this->section('JS'); ?>
+
+<script>
+    $(document).ready(function() {
+    $('#my_table').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+</script>
+
+<?php echo $this->endSection(); ?>
+<?php echo $this->endSection(); ?>

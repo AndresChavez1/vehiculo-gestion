@@ -104,3 +104,24 @@ a {
     bottom: 0;
     left: 0;
 }
+
+.dt-button {
+    /* Estilo de los botones */
+    background-color: #4CAF50 !important; /* Color de fondo */
+    color: white !important; /* Color del texto */
+    border: none !important; /* Sin borde */
+    padding: 10px 20px !important; /* Espacio alrededor del texto */
+    text-align: center !important; /* Alineación del texto */
+    text-decoration: none !important; /* Sin subrayado */
+    display: inline-block !important;
+    font-size: 16px !important;
+    margin: 4px 2px !important;
+    cursor: pointer !important; /* Cambia el cursor a una mano al pasar el ratón */
+    border-radius: 5px !important; /* Bordes redondeados */
+  }
+  
+  .dt-button:hover {
+    /* Estilo de los botones al pasar el ratón */
+    background-color: #45a049 !important;
+  }
+  

@@ -1,8 +1,10 @@
-<?php echo $this->extend('layouts/plantilla-interna'); ?>
+<?php echo $this->extend('layouts/plantilla'); ?>
 
-<?php echo $this->section('content'); ?>
+<?php echo $this->section('contenido'); ?>
 
 <h1 class="w3-center">Tablero <?php echo session()->get('nombres'). ' '. session()->get('apellidos') ?></h1>
+
+  <?php if (session()->get('rol') == '1'): ?>
 
     <div class="w3-row-padding w3-margin-top">
         <div class="w3-third w3-section w3-hover-text-theme">
@@ -42,7 +44,7 @@
           </div>
   
           <div class="w3-third w3-section w3-hover-text-theme">
-            <a href="<?php echo base_url('asignar-recursos') ?>">
+            <a href="<?php echo base_url('asignacion') ?>">
               <div class="w3-card-4 w3-center icon-container">
                 <img src="<?php echo base_url('assets/img/asignacion_recursos.svg'); ?>" class="svg">
                 <div class="w3-container w3-center">
@@ -51,6 +53,48 @@
               </div>
               </a>
             </div>
+  
+            <div class="w3-third w3-section w3-hover-text-theme">
+              <a href="<?php echo base_url('perfil') ?>">
+              <div class="w3-card-4 w3-center icon-container">
+                <img src="<?php echo base_url('assets/img/mi_cuenta.svg'); ?>" class="svg">
+                <div class="w3-container w3-center">
+                  <h3>Mi cuenta</h3>
+                </div>
+              </div>
+              </a>
+            </div>
+          <div class="w3-third w3-section w3-hover-text-theme">
+            <div class="w3-card-4 w3-center icon-container">
+              <a href="<?php echo base_url('cambiar-contrasenia') ?>"><img src="<?php echo base_url('assets/img/cambiar_contraseña.svg'); ?>" class="svg" alt="ícono de Contraseña segura"></a>
+              <div class="w3-container w3-center">
+                <a href="<?php echo base_url('cambiar-contrasenia') ?>"><h3>Cambiar Contraseña</h3></a>
+              </div>
+            </div>
+          </div>
+  
+          <div class="w3-third w3-section w3-hover-text-theme">
+            <a href="<?php echo base_url('/logout') ?>">
+              <div class="w3-card-4 w3-center icon-container">
+                <img src="<?php echo base_url('assets/img/login.svg'); ?>" class="svg">
+                <div class="w3-container w3-center">
+                  <h3>Cerrar Sesión</h3>
+                </div>
+              </div>
+              </a>
+            </div>
+    </div>
+    
+    <?php else: ?>
+
+      <div class="w3-third w3-section w3-hover-text-theme">
+            <div class="w3-card-4 w3-center icon-container">
+              <a href="<?php echo base_url('mantenimiento'); ?>"><img src="<?php echo base_url('assets/img/mantenimiento_vehicular.svg'); ?>" class="svg" alt="Mantenimiento Vehicular"></a>
+              <div class="w3-container w3-center">
+                <a href="<?php echo base_url('mantenimiento'); ?>"><h3>Mantenimiento Vehicular</h3></a>
+              </div>
+            </div>
+          </div>
   
             <div class="w3-third w3-section w3-hover-text-theme">
               <a href="<?php echo base_url('mi-cuenta') ?>">
@@ -72,7 +116,7 @@
           </div>
   
           <div class="w3-third w3-section w3-hover-text-theme">
-            <a href="<?php echo base_url('inicio') ?>">
+            <a href="<?php echo base_url('/logout') ?>">
               <div class="w3-card-4 w3-center icon-container">
                 <img src="<?php echo base_url('assets/img/login.svg'); ?>" class="svg">
                 <div class="w3-container w3-center">
@@ -82,4 +126,6 @@
               </a>
             </div>
     </div>
-<?php echo $this->endSection('content'); ?>
+
+    <?php endif; ?>
+<?php echo $this->endSection(); ?>

@@ -18,6 +18,6 @@ class DistritoModel extends Model {
         'nombre_distrito',
         'codigo_distrito',
         'numero_circuitos',
-        'dependencia'
+        'provincia'
     ];
 }

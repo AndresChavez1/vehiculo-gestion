@@ -25,7 +25,7 @@ class GestionVehicularModel extends Model{
         'cilindraje',
         'carga',
         'pasajeros',
-        'dependencia'
+        'subcircuito'
     ];
 
     public function getTipo(){
@@ -37,9 +37,9 @@ class GestionVehicularModel extends Model{
         return $result;
     }
 
-    public function getDependencia(){
+    public function getSubcircuito(){
         $builder = $this->db
-        ->table('dependencia');
+        ->table('subcircuito');
         $query = $builder->get();
         $result = $query->getResult();
         return $result;
@@ -50,14 +50,14 @@ class GestionVehicularModel extends Model{
         ->table('vehiculo')
         ->select('*')
         ->join('tipo_vehiculo', 'vehiculo.tipo = tipo_vehiculo.id_tipo_vehiculo')
-        ->join('dependencia', 'vehiculo.dependencia = dependencia.id_dependencia');
+        ->join('subcircuito', 'vehiculo.subcircuito = subcircuito.id_subcircuito');
         $query = $builder->get();
         $result = $query->getResult();
         $tipo_vehiculo = $this->getTipo();
-        $dependencia = $this->getDependencia();
+        $subcircuito = $this->getSubcircuito();
         $data['tipo_vehiculo'] = $tipo_vehiculo;
         $data['vehiculo'] = $result;
-        $data['dependencia'] = $dependencia;
+        $data['subcircuito'] = $subcircuito;
         return view('vehiculo-gestion/vehiculo', $data);
     }
 

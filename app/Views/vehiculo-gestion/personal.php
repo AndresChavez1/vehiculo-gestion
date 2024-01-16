@@ -5,19 +5,12 @@
 <!-- Contenido de la página Gestión Personal -->
 <div class="w3-row-padding">
         <div class="w3-container w3-third">
-            <input class="w3-input w3-border w3-round-xlarge" type="text" placeholder="Buscar" id="input" onkeyup="search()">
         </div>
         <div class="w3-container w3-col l1 w3-right w3-margin-right ">
             <button class="w3-button w3-xlarge w3-circle w3-theme-button w3-card-4"
             onclick="mostrarModal()">+</button>
         </div>
     </div>
-
-    <?php
-     if(isset($_SESSION['msg'])){
-        echo $_SESSION['msg'];
-      }
-     ?>
      
 <!-- Ventana Emergente Para Añadir Usuario-->
     <div id="modal" class="w3-modal">
@@ -51,15 +44,6 @@
                     name="fecha_nacimiento" type="date" placeholder="Ingresar Fecha de nacimiento">
                 </div>
                 <div class="w3-section w3-half">
-                    <label><b>Grupo Sanguineo</b></label>
-                    <select name="tipo_sangre" class="w3-select">
-                        <option value=""></option>
-                        <?php foreach ($tipo_sangre as $item): ?>
-                            <option value="<?php echo $item->id_tipo_sangre ?>"><?php echo $item->nombre_tipo_sangre ?></option>
-                        <?php endforeach; ?>
-                        </select>
-                </div>
-                <div class="w3-section w3-half">
                     <label><b>Ciudad de nacimiento</b></label>
                     <input class="w3-input w3-border w3-margin-bottom" 
                     name="ciudad_nacimiento" type="text" placeholder="Ingresar Ciudad de nacimiento">
@@ -69,7 +53,16 @@
                     <input class="w3-input w3-border w3-margin-bottom" 
                     name="telefono" type="text" placeholder="Ingresar Telefono">
                 </div>
-                <div class="w3-section w3-half">
+                <div class="w3-section w3-row">
+                    <label><b>Grupo Sanguineo</b></label>
+                    <select name="tipo_sangre" class="w3-select">
+                        <option value=""></option>
+                        <?php foreach ($tipo_sangre as $item): ?>
+                            <option value="<?php echo $item->id_tipo_sangre ?>"><?php echo $item->nombre_tipo_sangre ?></option>
+                        <?php endforeach; ?>
+                        </select>
+                </div>
+                <div class="w3-section w3-row">
                     <label><b>Rango</b></label>
                     <select name="rango" class="w3-select">
                         <option value=""></option>
@@ -78,16 +71,16 @@
                         <?php endforeach; ?>
                         </select>
                 </div>
-                <div class="w3-section w3-half">
-                    <label><b>Dependencia</b></label>
-                    <select name="dependencia" class="w3-select">
+                <div class="w3-section w3-row">
+                    <label><b>Subcircuito</b></label>
+                    <select name="subcircuito" class="w3-select">
                         <option value=""></option>
-                        <?php foreach ($dependencia as $item): ?>
-                            <option value="<?php echo $item->id_dependencia ?>"><?php echo $item->nombre_dependencia ?></option>
+                        <?php foreach ($subcircuito as $item): ?>
+                            <option value="<?php echo $item->id_subcircuito ?>"><?php echo $item->nombre_subcircuito ?></option>
                         <?php endforeach; ?>
                         </select>
                 </div>
-                <div class="w3-section w3-half">
+                <div class="w3-section w3-row">
                     <label><b>Vehiculo</b></label>
                     <select name="vehiculo" class="w3-select">
                         <option value=""></option>
@@ -96,7 +89,7 @@
                         <?php endforeach; ?>
                         </select>
                 </div>
-                <div class="w3-section w3-half">
+                <div class="w3-section w3-row">
                     <label><b>Rol</b></label>
                     <select name="rol" class="w3-select">
                         <option value=""></option>
@@ -125,7 +118,7 @@
                 <th>Grupo Sanguíneo</th>
                 <th>Teléfono</th>
                 <th>Rango</th>
-                <th>Dependencia</th>
+                <th>Subcircuito</th>
                 <th>Vehiculo</th>
                 <th>Rol</th>
                 <th>Editar</th>
@@ -144,7 +137,7 @@
                 <td><?php echo $row->nombre_tipo_sangre;?></td>
                 <td><?php echo $row->telefono;?></td>
                 <td><?php echo $row->nombre_rango;?></td>
-                <td><?php echo $row->nombre_dependencia;?></td>
+                <td><?php echo $row->nombre_subcircuito;?></td>
                 <td><?php echo $row->placa;?></td>
                 <td><?php echo $row->nombre_rol;?></td>
                 <td><a href="<?php echo base_url('editar-personal/'.$row->id_personal); ?>" 
@@ -162,8 +155,13 @@
 
 <script>
     $(document).ready(function() {
-    $('#my_table').DataTable();
-  });
+    $('#my_table').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
 </script>
 
 <?php echo $this->endSection(); ?>

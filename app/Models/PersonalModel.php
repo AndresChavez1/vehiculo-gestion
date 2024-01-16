@@ -22,7 +22,7 @@ class PersonalModel extends Model{
         'tipo_sangre',
         'telefono',
         'rango',
-        'dependencia',
+        'subcircuito',
         'vehiculo',
         'rol'
     ];
@@ -70,9 +70,9 @@ class PersonalModel extends Model{
         return $result;
     }
 
-    public function getDependencia(){
+    public function getSubcircuito(){
         $builder = $this->db
-        ->table('dependencia')
+        ->table('subcircuito')
         ->select('*');
         $query = $builder->get();
         $result = $query->getResult();
@@ -101,20 +101,20 @@ class PersonalModel extends Model{
         ->table('personal')
         ->join('rango', 'personal.rango  = rango.id_rango', 'left')
         ->join('rol', 'personal.rol  = rol.id_rol', 'left')
-        ->join('dependencia', 'personal.dependencia  = dependencia.id_dependencia', 'left')
+        ->join('subcircuito', 'personal.subcircuito  = subcircuito.id_subcircuito', 'left')
         ->join('tipo_sangre', 'personal.tipo_sangre  = tipo_sangre.id_tipo_sangre', 'left')
         ->join('vehiculo', 'personal.vehiculo  = vehiculo.id_vehiculo', 'left')
         ->orderBy('id_personal', 'asc');
         $query = $builder->get();
         $result = $query->getResult();
         $rango = $this->getRango();
-        $dependencia = $this->getDependencia();
+        $subcircuito = $this->getSubcircuito();
         $tipo_sangre = $this->getTipoSangre();
         $rol = $this->getRol();
         $vehiculo = $this->getVehiculo();
         $data['personal'] = $result;
         $data['rango'] = $rango;
-        $data['dependencia'] = $dependencia;
+        $data['subcircuito'] = $subcircuito;
         $data['rol'] = $rol;
         $data['tipo_sangre'] = $tipo_sangre;
         $data['vehiculo'] = $vehiculo;
