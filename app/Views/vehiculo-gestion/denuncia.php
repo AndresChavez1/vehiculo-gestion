@@ -103,7 +103,7 @@
                 <td><?php echo $row->id_denuncia ?></td>
                 <td><?php echo $row->fecha_inicio ?></td>
                 <td><?php echo $row->fecha_fin ?></td>
-                <td><?php echo $row->tipo_denuncia ?></td>
+                <td><?php echo $row->nombre_tipo_denuncia ?></td>
                 <td><?php echo $row->detalle ?></td>
                 <td><?php echo $row->nombre_subcircuito ?></td>
                 <td><?php echo $row->nombre_circuito ?></td>

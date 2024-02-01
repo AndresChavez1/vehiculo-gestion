@@ -21,7 +21,7 @@
                 <div class="w3-row w3-section">
                     <div class="w3-col" style="width: 50px;"><i class="fa-solid fa-address-book w3-xxlarge"></i></div>
                     <div class="w3-rest">
-                        <select class="w3-select" readonly id="">
+                        <select class="w3-select" readonly id="nombre_rol">
                             <option value="<?php echo $user['rol'];?>"><?php echo $user['rol'];?></option>
                         </select>
                     </div>
@@ -83,20 +83,6 @@
                     <select class="w3-select" readonly id="">
                             <option value="<?php echo $user['rango'];?>"><?php echo $user['rango'];?></option>
                         </select>
-                    </div>
-                </div>
-                <div class="w3-row w3-section">
-                    <div class="w3-col" style="width: 50px;"><i class="fa-solid fa-envelope w3-xxlarge"></i></div>
-                    <div class="w3-rest">
-                        <input class="w3-input w3-border" type="email" readonly id="email"
-                        value="<?php echo $user['correo']; ?>">
-                    </div>
-                </div>
-                <div class="w3-row w3-section">
-                    <div class="w3-col" style="width: 50px;"><i class="fa-solid fa-key w3-xxlarge"></i></div>
-                    <div class="w3-rest">
-                        <input class="w3-input w3-border" type="password" name="contraseña" id="contraseña" placeholder="Contraseña"
-                        value="">
                     </div>
                 </div>
                 <?php if(isset($validation)): ?>

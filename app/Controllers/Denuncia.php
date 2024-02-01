@@ -31,6 +31,7 @@ class Denuncia extends BaseController{
     public function show($id = null){
         $model = new DenunciaModel();
         $data['denuncia_obj'] = $model
+        ->join('tipo_denuncia', 'denuncia.tipo_denuncia = tipo_denuncia.id_tipo_denuncia')
         ->where('id_denuncia', $id)->first();
         return view('vehiculo-gestion/denuncia-edit', $data); 
     }

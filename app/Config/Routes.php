@@ -7,80 +7,80 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 
-$routes->get('/inicio', 'Inicio::index');
+$routes->get('/inicio', 'Inicio::index', ['filter' => 'noauth']);
 
 $routes->get('/logout', 'Registro::logout');
-$routes->match(['get', 'post'],'/login', 'Registro::login');
-$routes->match(['get', 'post'],'/registro', 'Registro::registro');
-$routes->match(['get', 'post'],'/perfil', 'Registro::perfil');
-$routes->match(['get', 'post'],'/cambiar-contrasenia', 'Registro::changePass');
-
-
-$routes->get('/tablero', 'Tablero::index');
+$routes->match(['get', 'post'],'/login', 'Registro::login', ['filter' => 'noauth']);
+$routes->match(['get', 'post'],'/registro', 'Registro::registro', ['filter' => 'noauth']);
+$routes->match(['get', 'post'],'/perfil', 'Registro::perfil' , ['filter' => 'auth']);
+$routes->match(['get', 'post'],'/cambiar-contrasenia', 'Registro::contraseña');
+$routes->get('/tablero', 'Tablero::index', ['filter' => 'auth']);
 
 //Asignar Recursos
-$routes->get('/asignacion', 'Asignacion::index');
+$routes->get('/asignacion', 'Asignacion::index', ['filter' => 'auth']);
+$routes->put('/personal-sub', 'Asignacion::updatePersonal', ['filter' => 'auth']);
+$routes->put('/vehiculo-sub', 'Asignacion::updateVehiculo', ['filter' => 'auth']);
 
 //CRUD Gestión Personal Arreglada
-$routes->get('personal', 'Personal::index');
-$routes->get('user-form', 'Personal::create');
-$routes->post('personal-form', 'Personal::store');
-$routes->get('editar-personal/(:num)', 'Personal::show/$1');
-$routes->put('actualizar-personal', 'Personal::update');
-$routes->get('eliminar-personal/(:num)', 'Personal::delete/$1');
+$routes->get('personal', 'Personal::index', ['filter' => 'auth']);
+$routes->get('user-form', 'Personal::create', ['filter' => 'auth']);
+$routes->post('personal-form', 'Personal::store', ['filter' => 'auth']);
+$routes->get('editar-personal/(:num)', 'Personal::show/$1', ['filter' => 'auth']);
+$routes->put('actualizar-personal', 'Personal::update', ['filter' => 'auth']);
+$routes->get('eliminar-personal/(:num)', 'Personal::delete/$1', ['filter' => 'auth']);
 
 //CRUD Gestión Vehicular Arreglada
-$routes->get('vehiculo', 'Vehiculo::index');
-$routes->get('user-form', 'Vehiculo::create');
-$routes->post('vehiculo-form', 'Vehiculo::store');
-$routes->get('editar-vehiculo/(:num)', 'Vehiculo::show/$1');
-$routes->put('actualizar-vehiculo', 'Vehiculo::update');
-$routes->get('eliminar-vehiculo/(:num)', 'Vehiculo::delete/$1');
+$routes->get('vehiculo', 'Vehiculo::index', ['filter' => 'auth']);
+$routes->get('user-form', 'Vehiculo::create', ['filter' => 'auth']);
+$routes->post('vehiculo-form', 'Vehiculo::store', ['filter' => 'auth']);
+$routes->get('editar-vehiculo/(:num)', 'Vehiculo::show/$1', ['filter' => 'auth']);
+$routes->put('actualizar-vehiculo', 'Vehiculo::update', ['filter' => 'auth']);
+$routes->get('eliminar-vehiculo/(:num)', 'Vehiculo::delete/$1', ['filter' => 'auth']);
 
 //CRUD Gestión Dependencia 
-$routes->get('dependencia', 'Dependencia::index');
-$routes->post('dependencia-general', 'Dependencia::store');
+$routes->get('dependencia', 'Dependencia::index', ['filter' => 'auth']);
+$routes->post('dependencia-general', 'Dependencia::store', ['filter' => 'auth']);
 //PROVINCIA
-$routes->get('provincia-form', 'Dependencia::createProvincia');
-$routes->post('provincia-add', 'Dependencia::storeProvincia');
-$routes->get('editar-provincia/(:num)', 'Dependencia::showProvincia/$1');
-$routes->put('actualizar-provincia', 'Dependencia::updateProvincia');
-$routes->get('eliminar-provincia/(:num)', 'Dependencia::deleteProvincia/$1');
+$routes->get('provincia-form', 'Dependencia::createProvincia', ['filter' => 'auth']);
+$routes->post('provincia-add', 'Dependencia::storeProvincia', ['filter' => 'auth']);
+$routes->get('editar-provincia/(:num)', 'Dependencia::showProvincia/$1', ['filter' => 'auth']);
+$routes->put('actualizar-provincia', 'Dependencia::updateProvincia', ['filter' => 'auth']);
+$routes->get('eliminar-provincia/(:num)', 'Dependencia::deleteProvincia/$1', ['filter' => 'auth']);
 //PARROQUIA
-$routes->get('parroquia-form', 'Dependencia::createParroquia');
-$routes->post('parroquia-add', 'Dependencia::storeParroquia');
-$routes->get('editar-parroquia/(:num)', 'Dependencia::showParroquia/$1');
-$routes->put('actualizar-parroquia', 'Dependencia::updateParroquia');
-$routes->get('eliminar-parroquia/(:num)', 'Dependencia::deleteParroquia/$1');
+$routes->get('parroquia-form', 'Dependencia::createParroquia', ['filter' => 'auth']);
+$routes->post('parroquia-add', 'Dependencia::storeParroquia', ['filter' => 'auth']);
+$routes->get('editar-parroquia/(:num)', 'Dependencia::showParroquia/$1', ['filter' => 'auth']);
+$routes->put('actualizar-parroquia', 'Dependencia::updateParroquia', ['filter' => 'auth']);
+$routes->get('eliminar-parroquia/(:num)', 'Dependencia::deleteParroquia/$1', ['filter' => 'auth']);
 
 //DISTRITO
-$routes->get('distrito-form', 'Dependencia::createDistrito');
-$routes->post('distrito-add', 'Dependencia::storeDistrito');
-$routes->get('editar-distrito/(:num)', 'Dependencia::showDistrito/$1');
-$routes->put('actualizar-distrito', 'Dependencia::updateDistrito');
-$routes->get('eliminar-distrito/(:num)', 'Dependencia::deleteDistrito/$1');
+$routes->get('distrito-form', 'Dependencia::createDistrito', ['filter' => 'auth']);
+$routes->post('distrito-add', 'Dependencia::storeDistrito', ['filter' => 'auth']);
+$routes->get('editar-distrito/(:num)', 'Dependencia::showDistrito/$1', ['filter' => 'auth']);
+$routes->put('actualizar-distrito', 'Dependencia::updateDistrito', ['filter' => 'auth']);
+$routes->get('eliminar-distrito/(:num)', 'Dependencia::deleteDistrito/$1', ['filter' => 'auth']);
 
 //CIRCUITO
-$routes->get('circuito-form', 'Dependencia::createCircuito');
-$routes->post('circuito-add', 'Dependencia::storeCircuito');
-$routes->get('editar-circuito/(:num)', 'Dependencia::showCircuito/$1');
-$routes->put('actualizar-circuito', 'Dependencia::updateCircuito');
-$routes->get('eliminar-circuito/(:num)', 'Dependencia::deleteCircuito/$1');
+$routes->get('circuito-form', 'Dependencia::createCircuito', ['filter' => 'auth']);
+$routes->post('circuito-add', 'Dependencia::storeCircuito', ['filter' => 'auth']);
+$routes->get('editar-circuito/(:num)', 'Dependencia::showCircuito/$1', ['filter' => 'auth']);
+$routes->put('actualizar-circuito', 'Dependencia::updateCircuito', ['filter' => 'auth']);
+$routes->get('eliminar-circuito/(:num)', 'Dependencia::deleteCircuito/$1', ['filter' => 'auth']);
 
 //SUBCIRCUITO
-$routes->get('subcircuito-form', 'Dependencia::createSubcircuito');
-$routes->post('subcircuito-add', 'Dependencia::storeSubcircuito');
-$routes->get('editar-subcircuito/(:num)', 'Dependencia::showSubcircuito/$1');
-$routes->put('actualizar-subcircuito', 'Dependencia::updateSubcircuito');
-$routes->get('eliminar-subcircuito/(:num)', 'Dependencia::deleteSubcircuito/$1');
+$routes->get('subcircuito-form', 'Dependencia::createSubcircuito', ['filter' => 'auth']);
+$routes->post('subcircuito-add', 'Dependencia::storeSubcircuito', ['filter' => 'auth']);
+$routes->get('editar-subcircuito/(:num)', 'Dependencia::showSubcircuito/$1', ['filter' => 'auth']);
+$routes->put('actualizar-subcircuito', 'Dependencia::updateSubcircuito', ['filter' => 'auth']);
+$routes->get('eliminar-subcircuito/(:num)', 'Dependencia::deleteSubcircuito/$1', ['filter' => 'auth']);
 
 //Mantenimiento Vehicular
-$routes->get('mantenimiento', 'Mantenimiento::index');
-$routes->get('user-form', 'Mantenimiento::create');
-$routes->post('mantenimiento-form', 'Mantenimiento::store');
-$routes->get('editar-vehiculo/(:num)', 'Mantenimiento::show/$1');
-$routes->put('actualizar-vehiculo', 'Mantenimiento::update');
-$routes->get('eliminar-mantenimiento/(:num)', 'Mantenimiento::delete/$1');
+$routes->get('mantenimiento', 'Mantenimiento::index', ['filter' => 'auth']);
+$routes->get('user-form', 'Mantenimiento::create', ['filter' => 'auth']);
+$routes->post('mantenimiento-form', 'Mantenimiento::store', ['filter' => 'auth']);
+$routes->get('editar-vehiculo/(:num)', 'Mantenimiento::show/$1', ['filter' => 'auth']);
+$routes->put('actualizar-vehiculo', 'Mantenimiento::update', ['filter' => 'auth']);
+$routes->get('eliminar-mantenimiento/(:num)', 'Mantenimiento::delete/$1', ['filter' => 'auth']);
 
 //DENUNCIAS
 $routes->get('denuncias', 'Denuncia::index');

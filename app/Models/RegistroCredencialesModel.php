@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class RegistroCredencialesModel extends MOdel {
+class RegistroCredencialesModel extends Model {
 
     protected $table = 'credenciales';
     protected $primaryKey = 'id_credencial';
@@ -33,6 +33,4 @@ class RegistroCredencialesModel extends MOdel {
         return $data;
     }
 
-    public function correoData(){
-    }
 }

@@ -18,7 +18,7 @@
                 <input type="hidden" name="id_denuncia" id="id_denuncia" value="<?php echo $denuncia_obj['id_denuncia']; ?>">
                     <label><b>Fecha Fin</b></label>
                     <input class="w3-input w3-border w3-margin-bottom" 
-                    name="fecha_fin" type="date" value="<?php echo $denuncia_obj['fecha_fin']; ?>">   
+                    name="fecha_fin" type="date" value="<?php echo $denuncia_obj['fecha_fin'] ?>">   
                 </div>
                 <button type="submit" class="w3-button w3-block w3-section w3-padding w3-theme-button">Guardar</button>
             </form>

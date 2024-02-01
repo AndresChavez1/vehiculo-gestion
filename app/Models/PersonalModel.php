@@ -27,32 +27,6 @@ class PersonalModel extends Model{
         'rol'
     ];
 
-/*
-    // Dates
-    protected $useTimestamps = false;
-    protected $dateFormat    = 'datetime';
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
-
-    // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
-    protected $skipValidation       = false;
-    protected $cleanValidationRules = true;
-
-    // Callbacks
-    protected $allowCallbacks = true;
-    protected $beforeInsert   = [];
-    protected $afterInsert    = [];
-    protected $beforeUpdate   = [];
-    protected $afterUpdate    = [];
-    protected $beforeFind     = [];
-    protected $afterFind      = [];
-    protected $beforeDelete   = [];
-    protected $afterDelete    = [];
-    */
-
     public function getRango()
     {
         $builder = $this->db->table('rango')
@@ -120,15 +94,5 @@ class PersonalModel extends Model{
         $data['vehiculo'] = $vehiculo;
         return view('vehiculo-gestion/personal', $data);
     }
-
-    /*public function getOne($id = null){
-        $builder = $this->db
-        ->table('personal')
-        ->where('id_personal', $id);
-        $query = $builder->get();
-        $result = $query->getResult();
-        $data['personal_obj'] = $result;
-        return view('vehiculo-gestion/personal-edit', $data);
-    }*/
 
 }
