@@ -6,7 +6,7 @@
 
 <div class="w3-container w3-center">
     <h2>Tabla con Acordéon</h2>
-    <button class="w3-button w3-block w3-theme-button w3-large"
+    <button class="w3-button w3-block w3-theme-button w3-large acordeon w3-round-large"
     onclick="myFunction('Demo1')">Mostrar/Ocultar Asignación de Usuarios</button>
     <div id="Demo1" class="w3-container w3-hide w3-animate-zoom">
       <form action="<?php echo base_url('personal-sub') ?>"
@@ -44,7 +44,7 @@
       </form>
     </div>
     <br>
-    <button class="w3-button w3-block w3-theme-button w3-large"
+    <button class="w3-button w3-block w3-theme-button w3-large acordeon w3-round-large"
     onclick="myFunction('Demo2')">Mostrar/Ocultar Asignación de Vehículos</button>
     <div id="Demo2" class="w3-container w3-hide w3-animate-zoom">
       <form action="<?php echo base_url('vehiculo-sub') ?>" method="post">

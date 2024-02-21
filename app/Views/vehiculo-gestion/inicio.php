@@ -10,7 +10,38 @@
             <p>Vehiculo Gestion es un sitio web que se encarga de la gestión de los recursos de la Policía Nacional, así como el mantenimiento preventivo de los vehículos pertenecientes a esta. Nuestro objetivo es garantizar que los vehículos de la Policía Nacional estén en óptimas condiciones para su uso en las operaciones policiales.</p>
         </article>
         <div class="w3-container w3-twothird w3-center img-section">
-            <img src="<?php echo base_url('assets/img/police-car.svg')?>" alt="Police Car">
+            <img src="<?php echo base_url('assets/img/Gemini_Image.png')?>" alt="Auto">
+        </div>
+    </div>
+
+    <h2 class="w3-center">Algunos de nuestros servicios son: </h2>
+    <div class="w3-row-padding w3-margin-top">
+        <div class="w3-col tablero w3-hover-text-theme w3-margin">
+          <div class="w3-card-4 icon-container w3-round-xlarge ">
+            <img src="<?php echo base_url('assets/img/gestion_personal.svg')?>" alt="Gestión de personal" class="svg">
+            <div class="w3-container w3-center">
+              <h3>Gestión del Personal</h3>
+            </div>
+          </div>
+        </div>
+      
+        <div class="w3-col tablero w3-hover-text-theme w3-margin">
+          <div class="w3-card-4 icon-container w3-round-xlarge">
+            <img src="<?php echo base_url('assets/img/gestion_vehicular.svg')?>" alt="Gestión vehicular" class="svg">
+            <div class="w3-container w3-center">
+              <h3>Gestión Vehicular</h3>
+            </div>
+          </div>
+        </div>
+  
+      
+        <div class="w3-col tablero w3-hover-text-theme w3-margin">
+          <div class="w3-card-4 icon-container w3-round-xlarge">
+            <img src="<?php echo base_url('assets/img/gestion_dependencias.svg')?>" alt="Gestión de dependencias" class="svg">
+            <div class="w3-container w3-center">
+              <h3>Gestión de Dependencias</h3>
+            </div>
+          </div>
         </div>
     </div>
 

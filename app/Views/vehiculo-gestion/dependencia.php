@@ -75,7 +75,9 @@
         </table>
     </div>
 
-    <div class="w3-responsive w3-container" style="margin-left: 30px; margin-right: 30px;">
+    <button class="w3-button w3-block w3-theme-button w3-large acordeon w3-round-large"
+    onclick="myFunction('Tabla1')">Mostrar/Ocultar Provincia</button>
+    <div id="Tabla1" class="w3-responsive w3-container w3-hide w3-animate-zoom" style="margin-left: 30px; margin-right: 30px;">
         <h1>Provincia</h1>
         <table class="w3-table w3-bordered w3-border" id="my_second_table">
             <thead>
@@ -103,10 +105,12 @@
             </tbody>
         </table>
     </div>
-
-    <div class="w3-responsive w3-container" style="margin-left: 30px; margin-right: 30px;">
+    
+    <button class="w3-button w3-block w3-theme-button w3-large acordeon w3-round-large"
+    onclick="myFunction('Tabla2')">Mostrar/Ocultar Distrito</button>
+    <div id="Tabla2" class="w3-responsive w3-container w3-hide w3-animate-zoom" style="margin-left: 30px; margin-right: 30px;">
         <h1>Distrito</h1>
-        <table class="w3-table w3-bordered w3-border" id="my_third_table">
+        <table class="w3-table w3-border w3-centered" id="my_third_table">
             <thead>
             <tr>
                 <th>Distrito</th>
@@ -137,7 +141,9 @@
         </table>
     </div>
 
-    <div class="w3-responsive w3-container" style="margin-left: 30px; margin-right: 30px;">
+    <button class="w3-button w3-block w3-theme-button w3-large acordeon w3-round-large"
+    onclick="myFunction('Tabla3')">Mostrar/Ocultar Parroquia</button>
+    <div id="Tabla3" class="w3-responsive w3-container w3-hide w3-animate-zoom" style="margin-left: 30px; margin-right: 30px;">
         <h1>Parroquia</h1>
         <table class="w3-table w3-bordered w3-border" id="my_fourth_table">
             <thead>
@@ -165,8 +171,10 @@
             </tbody>
         </table>
     </div>
-
-    <div class="w3-responsive w3-container" style="margin-left: 30px; margin-right: 30px;">
+    
+    <button class="w3-button w3-block w3-theme-button w3-large acordeon w3-round-large"
+    onclick="myFunction('Tabla4')">Mostrar/Ocultar Circuito</button>
+    <div id="Tabla4" class="w3-responsive w3-container w3-hide w3-animate-zoom" style="margin-left: 30px; margin-right: 30px;">
         <h1>Circuito</h1>
         <table class="w3-table w3-bordered w3-border" id="my_fifth_table">
             <thead>
@@ -201,7 +209,9 @@
         </table>
     </div>
     
-    <div class="w3-responsive w3-container" style="margin-left: 30px; margin-right: 30px;">
+    <button class="w3-button w3-block w3-theme-button w3-large acordeon w3-round-large"
+    onclick="myFunction('Tabla5')">Mostrar/Ocultar Subcircuito</button>
+    <div id="Tabla5" class="w3-responsive w3-container w3-hide w3-animate-zoom" style="margin-left: 30px; margin-right: 30px;">
         <h1>Subcircuito</h1>
         <table class="w3-table w3-bordered w3-border" id="my_sixth_table">
             <thead>

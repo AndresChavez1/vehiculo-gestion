@@ -1,3 +1,4 @@
+
 .w3-theme {
     color:#fff !important; background-color:#0c1b27 !important
 }
@@ -22,24 +23,19 @@
     background: linear-gradient(180deg, #0c1b27, #aaafb8);
     color: aliceblue;
 }
+/* Para el cuerpo del texto con la fuente Inter */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Para títulos y subtítulos con la fuente Racing Sans One */
+h1, h2, h3 {
+    font-family: 'Racing Sans One', sans-serif;
+}
 
 .size {
     width: 30%;
 }
-
-/*h1{
-    font-size: 2.782vw;
-}
-h2{
-    font-size: 2.318vw;
-}
-h3{
-    font-size: 1.855vw;
-}
-
-h4{
-    font-size: 1.391 vw;
-}*/
 
 .fa-users, .fa-screwdriver-wrench, .fa-car-on{
     color: #5ce1e6;
@@ -56,6 +52,10 @@ img {
 
 .indes-section {
     padding: 80px;
+}
+.img-section {
+    width: 40%;
+    margin-left: 8rem;
 }
 
 .bltb {
@@ -91,8 +91,18 @@ img {
 }
 
 .svg{
-    width: 200px;
+    width: 75%;
     height: 150px;
+}
+.tablero{
+    width: 30%;
+}
+.acordeon{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
 }
 
 a {
@@ -107,7 +117,7 @@ a {
 
 .dt-button {
     /* Estilo de los botones */
-    background-color: #4CAF50 !important; /* Color de fondo */
+    background-color: #3bb0d1 !important; /* Color de fondo */
     color: white !important; /* Color del texto */
     border: none !important; /* Sin borde */
     padding: 10px 20px !important; /* Espacio alrededor del texto */
@@ -122,6 +132,6 @@ a {
   
   .dt-button:hover {
     /* Estilo de los botones al pasar el ratón */
-    background-color: #45a049 !important;
+    background-color: #5ce1e6 !important;
   }
   
