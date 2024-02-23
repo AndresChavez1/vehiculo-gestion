@@ -72,7 +72,8 @@
                     <?php echo $sub['nombre_subcircuito'] ?>
                   </option>
                 <?php endforeach ?>
-            </select></td>            </tr>
+            </select></td>            
+          </tr>
             <?php endforeach ?>
             <?php endif ?>
           </tbody>

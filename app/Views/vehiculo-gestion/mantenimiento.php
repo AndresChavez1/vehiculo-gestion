@@ -70,12 +70,72 @@
             </form>
         </div>
     </div>
-                        </div>
+</div>
 
     <hr class="w3-border-theme">
 
+    <?php if(session()->get('rol') != 2): ?>
     <div class="w3-responsive w3-container">
+    <form action="<?php echo base_url('actualizar-mantenimiento'); ?>" method="post">
+      <input type="hidden" name="_method" value="PUT">
         <table class="w3-table w3-bordered w3-border w3-centered" id="my_table">
+            <thead>
+            <tr>
+                <th><button class="w3-button w3-theme-button w3-round-large" type="submit">Actualizar</button></th>
+                <th>Solicitud N°</th>
+                <th>Fecha y hora de ingreso</th>
+                <th>Kilometraje</th>
+                <th>Tipo de Vehiculo</th>
+                <th>Placa</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Solicitante</th>
+                <th>Cédula</th>
+                <th>Asunto</th>
+                <th>Detalle</th>
+                <th>Estado</th>
+                <th>Eliminar</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php if($mantenimiento): ?>
+            <?php foreach ($mantenimiento as $row): ?>
+            <tr>
+            <td><input type="checkbox" class="w3-check" name="id_mantenimiento[]" value="<?php echo $row->id_mantenimiento ?>"></td>
+                <td><?php echo $row->id_mantenimiento; ?></td>
+                <td><?php echo $row->fecha_ingreso ?></td>
+                <td><?php echo $row->kilometraje;?></td>
+                <td><?php echo $row->nombre_tipo;?></td>
+                <td><?php echo $row->placa;?></td>
+                <td><?php echo $row->marca;?></td>
+                <td><?php echo $row->modelo;?></td>
+                <td><?php echo $row->nombres. ' ' .$row->apellidos;?></td>
+                <td><?php echo $row->cedula;?></td>
+                <td><?php echo $row->asunto; ?></td>
+                <td><?php echo $row->detalle;?></td>
+                <td><select name="estado[<?php echo $row->id_mantenimiento ?>]">
+                <?php foreach($estado as $es): ?>  
+                  <option value="<?php echo $es->id_estado_mantenimiento ?>" 
+                    <?php echo $es->id_estado_mantenimiento == $row->estado ? 'selected': '' ?>>
+                    <?php echo $es->estado_mantenimiento ?>
+                  </option>
+                <?php endforeach ?>
+            </select></td>
+                <td><button type="submit" class="w3-button w3-theme-button w3-round-large"><i class="fa-solid fa-pen-to-square"></i></button>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+            <?php endif; ?>
+            </tbody>
+        </table>
+    </form>
+    </div>
+    
+    <?php else: ?>
+
+    <h1 class="w3-center">Solicitudes: </h1>
+    <div class="w3-responsive w3-container">
+        <table class="w3-table w3-bordered w3-border w3-centered" id="my_table2">
             <thead>
             <tr>
                 <th>Solicitud N°</th>
@@ -89,7 +149,7 @@
                 <th>Cédula</th>
                 <th>Asunto</th>
                 <th>Detalle</th>
-                <th>Eliminar</th>
+                <th>Estado</th>
             </tr>
             </thead>
             <tbody>
@@ -103,19 +163,19 @@
                 <td><?php echo $row->placa;?></td>
                 <td><?php echo $row->marca;?></td>
                 <td><?php echo $row->modelo;?></td>
-                <td><?php echo $row->nombres. ' ' .$row->apellidos;;?></td>
+                <td><?php echo $row->nombres. ' ' .$row->apellidos;?></td>
                 <td><?php echo $row->cedula;?></td>
                 <td><?php echo $row->asunto; ?></td>
                 <td><?php echo $row->detalle;?></td>
-                <td><a href="<?php echo base_url('eliminar-mantenimiento/'.$row->id_mantenimiento); ?>" class="w3-button w3-small w3-round-large w3-red w3-card-4">
-                <i class="fa-solid fa-x"></i></a></td>
+                <td><?php echo $row->estado_mantenimiento; ?></td>
             </tr>
             <?php endforeach; ?>
             <?php endif; ?>
             </tbody>
         </table>
+    </form>
     </div>
-
+    <?php endif; ?>
     <?php echo $this->section('JS'); ?>
 
 <script>
@@ -126,7 +186,11 @@
             'copy', 'csv', 'excel', 'pdf', 'print'
         ]
     } );
-} );
+},
+$(document).ready(function() {
+    $('#my_table2').DataTable();
+} )
+);
 </script>
 
 <?php echo $this->endSection(); ?>

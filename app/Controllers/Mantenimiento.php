@@ -33,4 +33,19 @@ class Mantenimiento extends BaseController{
         $model->where('id_mantenimiento', $id)->delete($id);
         return $this->response->redirect(base_url('/mantenimiento'));
     }   
+
+    public function update(){
+        $model = new MantenimientoVehicular();
+        $ids = $this->request->getPost('id_mantenimiento');
+        $estado = $this->request->getPost('estado');
+        foreach ($ids as $id) {
+            if(isset($estado[$id])){
+                $data = [
+                    'estado' => $estado[$id]
+                ];
+                $model->update($id, $data);
+            }
+        }
+        return $this->response->redirect(base_url('/mantenimiento'));
+    }
 }

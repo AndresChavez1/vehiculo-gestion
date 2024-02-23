@@ -4,7 +4,8 @@
 
 <h1 class="w3-center">Tablero <?php echo session()->get('nombres'). ' '. session()->get('apellidos') ?></h1>
 
-  <?php if (session()->get('rol') == '1'): ?>
+  <?php if (session()->get('rol') == '1' || session()->get('rol') == '3' || session()->get('rol') == '4'
+        || session()->get('rol') == '5'): ?>
 
     <div class="w3-row-padding w3-margin-top">
     <a href=<?php echo base_url('personal'); ?>>

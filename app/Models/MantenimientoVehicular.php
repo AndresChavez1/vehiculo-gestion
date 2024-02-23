@@ -20,7 +20,8 @@ class MantenimientoVehicular extends Model{
         'detalle',
         'vehiculo',
         'personal',
-        'tipo_mantenimiento'
+        'tipo_mantenimiento',
+        'estado'
     ];
 
     public function getVehiculo(){
@@ -55,24 +56,35 @@ class MantenimientoVehicular extends Model{
         $result = $query->getResult();
         return $result;
     }
+
+    public function getEstado(){
+        $builder = $this->db
+        ->table('estado_mantenimiento');
+        $query = $builder->get();
+        $result = $query->getResult();
+        return $result;
+    }
     public function getMantenimiento(){
         $builder = $this->db
         ->table('mantenimiento')
         ->select('*')
         ->join('vehiculo', 'mantenimiento.vehiculo = vehiculo.id_vehiculo', 'inner')
         ->join('personal', 'mantenimiento.personal = personal.id_personal', 'inner')
-        ->join('tipo_vehiculo', 'vehiculo.tipo = tipo_vehiculo.id_tipo_vehiculo', 'inner');
+        ->join('tipo_vehiculo', 'vehiculo.tipo = tipo_vehiculo.id_tipo_vehiculo', 'inner')
+        ->join('estado_mantenimiento', 'mantenimiento.estado = estado_mantenimiento.id_estado_mantenimiento', 'inner');
         $query = $builder->get();
         $result = $query->getResult();
         $vehiculo = $this->getVehiculo();
         $personal = $this->getPersonal();
         $tipo_vehiculo = $this->getTipoVehiculo();
         $tipo_mantenimiento = $this->getTipoMantenimiento();
+        $estado = $this->getEstado();
         $data['mantenimiento'] = $result;
         $data['vehiculo'] = $vehiculo;
         $data['personal'] = $personal;
         $data['tipo_vehiculo'] = $tipo_vehiculo;
         $data['tipo_mantenimiento'] = $tipo_mantenimiento;
+        $data['estado'] = $estado;
         return view('vehiculo-gestion/mantenimiento', $data);
     }
 

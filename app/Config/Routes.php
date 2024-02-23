@@ -79,7 +79,7 @@ $routes->get('mantenimiento', 'Mantenimiento::index', ['filter' => 'auth']);
 $routes->get('user-form', 'Mantenimiento::create', ['filter' => 'auth']);
 $routes->post('mantenimiento-form', 'Mantenimiento::store', ['filter' => 'auth']);
 $routes->get('editar-vehiculo/(:num)', 'Mantenimiento::show/$1', ['filter' => 'auth']);
-$routes->put('actualizar-vehiculo', 'Mantenimiento::update', ['filter' => 'auth']);
+$routes->put('actualizar-mantenimiento', 'Mantenimiento::update', ['filter' => 'auth']);
 $routes->get('eliminar-mantenimiento/(:num)', 'Mantenimiento::delete/$1', ['filter' => 'auth']);
 
 //DENUNCIAS
