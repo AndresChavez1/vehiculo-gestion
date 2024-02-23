@@ -39,7 +39,7 @@ class Asignacion extends BaseController {
         $model = new PersonalModel();
         $ids = $this->request->getPost('id_personal');
         $subcircuitos = $this->request->getPost('subcircuito');
-        foreach ($ids as $id) {
+        foreach ($ids as $id) { 
             if(isset($subcircuitos[$id])){
                 $data = [
                     'subcircuito' => $subcircuitos[$id]

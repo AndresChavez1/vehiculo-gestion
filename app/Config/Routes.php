@@ -88,3 +88,12 @@ $routes->post('denuncia-form', 'Denuncia::store');
 $routes->get('editar-denuncia/(:num)', 'Denuncia::show/$1');
 $routes->put('actualizar-denuncia', 'Denuncia::update');
 $routes->get('eliminar-denuncia/(:num)', 'Denuncia::delete/$1');
+
+//PERTRECHOS
+$routes->get('pertrecho', 'Pertrechos::index', ['filter' => 'auth']);
+$routes->get('user-form', 'Pertrechos::create', ['filter' => 'auth']);
+$routes->post('pertrecho-form', 'Pertrechos::store', ['filter' => 'auth']);
+$routes->get('editar-pertrecho/(:num)', 'Pertrechos::show/$1', ['filter' => 'auth']);
+$routes->put('actualizar-pertrecho', 'Pertrechos::update', ['filter' => 'auth']);
+$routes->put('/pertrecho-sub', 'Pertrechos::update', ['filter' => 'auth']);
+$routes->get('eliminar-pertrecho/(:num)', 'Pertrechos::delete/$1', ['filter' => 'auth']);

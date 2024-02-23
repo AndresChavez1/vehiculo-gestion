@@ -84,6 +84,17 @@
             </div>
           </div>
           </a>
+
+          <a href="<?php echo base_url('pertrecho'); ?>">
+      <div class="w3-col tablero w3-hover-text-theme w3-margin">
+            <div class="w3-card-4 w3-center icon-container w3-round-xlarge">
+             <img src="<?php echo base_url('assets/img/pertrecho.svg'); ?>" class="svg" alt="Gestión de Pertrecho">
+              <div class="w3-container w3-center">
+                <h3>Pertrecho</h3>
+              </div>
+            </div>
+          </div>
+          </a>
   
           <a href="<?php echo base_url('/logout') ?>">
           <div class="w3-col tablero w3-hover-text-theme w3-margin">
@@ -96,6 +107,7 @@
               </a>
             </div>
     </div>
+    
     
     <?php else: ?>
 
@@ -110,8 +122,19 @@
             </div>
           </div>
           </a>
+
+          <a href="<?php echo base_url('pertrecho'); ?>">
+      <div class="w3-col tablero w3-hover-text-theme w3-margin">
+            <div class="w3-card-4 w3-center icon-container w3-round-xlarge">
+             <img src="<?php echo base_url('assets/img/pertrecho.svg'); ?>" class="svg" alt="Gestión de Pertrecho">
+              <div class="w3-container w3-center">
+                <h3>Pertrecho</h3>
+              </div>
+            </div>
+          </div>
+          </a>
   
-          <a href="<?php echo base_url('mi-cuenta') ?>">
+          <a href="<?php echo base_url('perfil') ?>">
             <div class="w3-col tablero w3-hover-text-theme w3-margin">
               <div class="w3-card-4 w3-center icon-container w3-round-xlarge">
                 <img src="<?php echo base_url('assets/img/mi_cuenta.svg'); ?>" class="svg">
@@ -122,7 +145,7 @@
             </div>
             </a>
 
-            <a href="<?php echo base_url('cambiar-contraseña') ?>">
+            <a href="<?php echo base_url('cambiar-contrasenia') ?>">
           <div class="w3-col tablero w3-hover-text-theme w3-margin">
             <div class="w3-card-4 w3-center icon-container w3-round-xlarge">
               <img src="<?php echo base_url('assets/img/cambiar_contraseña.svg'); ?>" class="svg" alt="ícono de Contraseña segura">

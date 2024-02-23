@@ -1,0 +1,45 @@
+<?php echo $this->extend('layouts/plantilla-interna'); ?>
+
+<?php echo $this->section('content'); ?>
+
+ <!-- Ventana Emergente Para Editar Usuario-->
+ <div>
+        <div class="w3-modal-content w3-card-4 w3-theme" style="max-width: 600px;">
+                <div class="w3-center">
+                    <br>
+                    <img src="<?php echo base_url('assets/img/add-user.svg') ?>" alt="User Icon" class=" w3-margin-top svg" >
+                </div>
+                
+            <form method="post" class="w3-container w3-row-padding" 
+            action="<?php echo base_url('/actualizar-pertrecho') ?>">
+                <div class="w3-section w3-half">    
+                    <input type="hidden" name="id_pertrecho" id="id_pertrecho" value="<?php echo $pertrechos_obj['id_pertrecho']; ?>">
+                    <label><b>Tipo de Arma</b></label>
+                    <input class="w3-input w3-border w3-margin-bottom" 
+                    name="tipo_arma" type="text" value="<?php echo $pertrechos_obj['tipo_arma']; ?>">
+                </div>
+                <div class="w3-section w3-half">
+                    <label><b>Nombre</b></label>
+                    <input class="w3-input w3-border w3-margin-bottom" 
+                    name="nombre" type="text" value="<?php echo $pertrechos_obj['nombre']; ?>">
+                </div>
+                <div class="w3-section w3-half">
+                    <label><b>Descripción</b></label>
+                    <input class="w3-input w3-border w3-margin-bottom" 
+                    name="descripcion" type="text" value="<?php echo $pertrechos_obj['descripcion']; ?>">
+                </div>
+                <div class="w3-section w3-half">
+                    <label><b>Código</b></label>
+                    <input class="w3-input w3-border w3-margin-bottom" 
+                    name="codigo" type="text" value="<?php echo $pertrechos_obj['codigo']; ?>">
+                </div>
+                <div class="w3-section w3-half">
+                    <label><b>Personal</b></label>
+                    <input class="w3-input w3-border w3-margin-bottom" 
+                    name="personal" type="text" value="<?php echo $personal_obj['personal']; ?>">
+                </div>
+                <button type="submit" class="w3-button w3-block w3-section w3-padding w3-theme-button">Guardar</button>
+            </form>
+        </div>
+    </div>
+    <?php echo $this->endSection('content'); ?>
